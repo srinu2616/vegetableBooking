@@ -15,11 +15,19 @@ const app = express();
 // Connect to Database
 connectDB();
 
+// Trust Proxy for Vercel
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(session({
     secret: process.env.SESSION_SECRET || 'secret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production', // Secure in production
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Cross-site for Vercel
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
 }));
 
 // Passport Config
