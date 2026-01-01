@@ -66,7 +66,8 @@ app.get('/debug-auth', (req, res) => {
         message: "Debug Info - Check if these match Google Console exactly",
         env_SERVER_URL: process.env.SERVER_URL || "(Not Set - Using Fallback)",
         computed_callbackURL: callbackURL,
-        google_client_id_configured: !!process.env.GOOGLE_CLIENT_ID
+        google_client_id_configured: !!process.env.GOOGLE_CLIENT_ID,
+        masked_client_id: process.env.GOOGLE_CLIENT_ID ? process.env.GOOGLE_CLIENT_ID.substring(0, 15) + '...' : 'NOT_SET'
     });
 });
 
