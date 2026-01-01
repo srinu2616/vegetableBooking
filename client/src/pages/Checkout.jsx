@@ -57,7 +57,6 @@ const Checkout = () => {
                     quantity: item.quantity,
                     price: item.price,
                     image: item.image,
-                    image: item.image,
                     unit: item.unit,
                     packSize: item.packSize || 1
                 })),
