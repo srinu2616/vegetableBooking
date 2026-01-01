@@ -59,6 +59,17 @@ app.use('/auth', authRoutes);
 app.use('/api/vegetables', vegetableRoutes);
 app.use('/api/orders', orderRoutes);
 
+app.get('/debug-auth', (req, res) => {
+    const serverUrl = (process.env.SERVER_URL || 'https://vegetable-booking-backend.vercel.app').replace(/\/$/, '');
+    const callbackURL = `${serverUrl}/auth/google/callback`;
+    res.json({
+        message: "Debug Info - Check if these match Google Console exactly",
+        env_SERVER_URL: process.env.SERVER_URL || "(Not Set - Using Fallback)",
+        computed_callbackURL: callbackURL,
+        google_client_id_configured: !!process.env.GOOGLE_CLIENT_ID
+    });
+});
+
 // Serve static assets in production
 const path = require('path');
 if (process.env.NODE_ENV === 'production') {
