@@ -3,10 +3,14 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 
 module.exports = function (passport) {
+    const serverUrl = (process.env.SERVER_URL || 'https://vegetable-booking-backend.vercel.app').replace(/\/$/, '');
+    const callbackURL = `${serverUrl}/auth/google/callback`;
+    console.log("Passport Callback URL Configuration:", callbackURL);
+
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: `${process.env.SERVER_URL || 'https://vegetable-booking-backend.vercel.app'}/auth/google/callback`
+        callbackURL: callbackURL
     },
         async (accessToken, refreshToken, profile, done) => {
             try {
