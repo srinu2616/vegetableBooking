@@ -10,7 +10,8 @@ module.exports = function (passport) {
     passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: callbackURL
+        callbackURL: callbackURL,
+        proxy: true // Trust proxy for Vercel
     },
         async (accessToken, refreshToken, profile, done) => {
             try {
