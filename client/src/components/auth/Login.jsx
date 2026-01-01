@@ -52,7 +52,8 @@ const Login = () => {
             // Checkout.jsx used `../../services/api`. Let's allow imports to be updated in a separate chunk or just use fetch here for robustness in this large replacement.
             // Actually, I'll import api at the top.
 
-            const response = await fetch(`http://localhost:5000${endpoint}`, {
+            const API_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5000';
+            const response = await fetch(`${API_URL}${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +77,8 @@ const Login = () => {
     };
 
     const handleGoogleLogin = () => {
-        window.location.href = 'http://localhost:5000/auth/google';
+        const API_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5000';
+        window.location.href = `${API_URL}/auth/google`;
     };
 
     const toggleMode = () => {
