@@ -33,7 +33,7 @@ const orderRoutes = require('./routes/orderRoutes');
 // Middleware
 app.use(helmet());
 app.use(cors({
-    origin: [process.env.CLIENT_URL || 'http://localhost:5179', 'http://localhost:5179', 'http://localhost:5173'],
+    origin: [process.env.CLIENT_URL || 'http://localhost:5179', 'http://localhost:5179', 'http://localhost:5173', 'https://vegetable-booking-frontend.vercel.app'],
     credentials: true
 }));
 app.use(morgan('dev'));
