@@ -41,7 +41,7 @@ const orderRoutes = require('./routes/orderRoutes');
 // Middleware
 app.use(helmet());
 app.use(cors({
-    origin: [process.env.CLIENT_URL || 'http://localhost:5179', 'http://localhost:5179', 'http://localhost:5173', 'https://vegetable-booking-frontend.vercel.app'],
+    origin: process.env.CLIENT_URL,
     credentials: true
 }));
 app.use(morgan('dev'));
@@ -60,7 +60,7 @@ app.use('/api/vegetables', vegetableRoutes);
 app.use('/api/orders', orderRoutes);
 
 app.get('/debug-auth', (req, res) => {
-    const serverUrl = (process.env.SERVER_URL || 'https://vegetable-booking-backend.vercel.app').replace(/\/$/, '');
+    const serverUrl = (process.env.SERVER_URL).replace(/\/$/, '');
     const callbackURL = `${serverUrl}/auth/google/callback`;
     res.json({
         message: "Debug Info - Check if these match Google Console exactly",
