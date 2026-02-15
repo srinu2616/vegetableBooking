@@ -42,7 +42,6 @@ const ProductDetails = () => {
             image: product.image || (product.images && product.images.length > 0 ? product.images[0] : '')
         };
         addToCart(cartItem, quantity);
-        toast.success(`Added ${quantity} ${product.unit} of ${product.name} to cart`);
     };
 
     if (loading) return <div className="flex justify-center items-center h-screen">Loading...</div>;
