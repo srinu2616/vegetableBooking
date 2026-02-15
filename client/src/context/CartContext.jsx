@@ -26,7 +26,7 @@ export const CartProvider = ({ children }) => {
                         : item
                 );
             } else {
-                toast.success(`Added ${product.name} to cart`);
+                toast.success(`Added ${quantity} ${product.unit || ''} of ${product.name} to cart`);
                 return [...prevItems, { ...product, quantity }];
             }
         });

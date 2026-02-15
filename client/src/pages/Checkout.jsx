@@ -75,6 +75,13 @@ const Checkout = () => {
                 navigate('/profile');
             } else {
                 // Razorpay Logic
+                const res = await loadRazorpay();
+
+                if (!res) {
+                    toast.error('Razorpay SDK failed to load. Are you online?');
+                    return;
+                }
+
                 const options = {
                     key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_change_me',
                     amount: data.razorpayOrder.amount,
@@ -130,15 +137,22 @@ const Checkout = () => {
         }
     };
 
-    // Load Razorpay Script dynamically if not present
+    const loadRazorpay = () => {
+        return new Promise((resolve) => {
+            const script = document.createElement('script');
+            script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+            script.onload = () => {
+                resolve(true);
+            };
+            script.onerror = () => {
+                resolve(false);
+            };
+            document.body.appendChild(script);
+        });
+    };
+
     React.useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-        script.async = true;
-        document.body.appendChild(script);
-        return () => {
-            document.body.removeChild(script);
-        }
+        loadRazorpay();
     }, []);
 
     if (cartItems.length === 0) {
