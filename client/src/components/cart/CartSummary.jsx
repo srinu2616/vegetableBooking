@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CartSummary = ({ total }) => {
     const navigate = useNavigate();
-    const shipping = total > 500 ? 0 : 50;
+    const shipping = 0;
     const finalTotal = total + shipping;
 
     return (
@@ -18,13 +18,8 @@ const CartSummary = ({ total }) => {
                 </div>
                 <div className="flex justify-between text-gray-600">
                     <span>Delivery Fee</span>
-                    <span>{shipping === 0 ? <span className="text-green-600 font-medium">Free</span> : `₹${shipping}`}</span>
+                    <span><span className="text-green-600 font-medium">Free</span></span>
                 </div>
-                {shipping > 0 && (
-                    <div className="text-xs text-gray-400 bg-gray-50 p-2 rounded-lg">
-                        Free delivery on orders above ₹500
-                    </div>
-                )}
                 <div className="border-t border-gray-100 pt-4 flex justify-between items-center">
                     <span className="font-bold text-lg text-gray-900">Total</span>
                     <span className="font-bold text-xl text-primary-600">₹{finalTotal.toFixed(2)}</span>
