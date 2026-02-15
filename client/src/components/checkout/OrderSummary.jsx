@@ -1,7 +1,7 @@
 import React from 'react';
 
 const OrderSummary = ({ cartItems, total }) => {
-    const shipping = total > 500 ? 0 : 50;
+    const shipping = 0;
     const finalTotal = total + shipping;
 
     return (

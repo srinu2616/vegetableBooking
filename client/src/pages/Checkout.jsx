@@ -37,7 +37,7 @@ const Checkout = () => {
 
     const [paymentMethod, setPaymentMethod] = useState('Razorpay');
 
-    const shipping = cartTotal > 500 ? 0 : 50;
+    const shipping = 0;
     const finalTotal = cartTotal + shipping;
 
     const handlePayment = async () => {
@@ -75,12 +75,15 @@ const Checkout = () => {
                 navigate('/profile');
             } else {
                 // Razorpay Logic
+                console.log("Loading Razorpay SDK...");
                 const res = await loadRazorpay();
 
                 if (!res) {
+                    console.error("Razorpay SDK failed to load");
                     toast.error('Razorpay SDK failed to load. Are you online?');
                     return;
                 }
+                console.log("Razorpay SDK loaded.");
 
                 const options = {
                     key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_change_me',
@@ -91,6 +94,7 @@ const Checkout = () => {
                     image: "https://cdn-icons-png.flaticon.com/512/3063/3063824.png",
                     order_id: data.razorpayOrder.id,
                     handler: async function (response) {
+                        console.log("Razorpay Payment Success", response);
                         try {
                             const verifyData = {
                                 razorpay_order_id: response.razorpay_order_id,
@@ -105,7 +109,7 @@ const Checkout = () => {
                             clearCart();
                             navigate('/profile');
                         } catch (err) {
-                            console.error(err);
+                            console.error("Payment Verification Failed", err);
                             toast.error("Payment Verification Failed");
                         }
                     },
@@ -122,15 +126,23 @@ const Checkout = () => {
                     }
                 };
 
-                const rzp1 = new window.Razorpay(options);
-                rzp1.on('payment.failed', function (response) {
-                    toast.error(response.error.description);
-                });
-                rzp1.open();
+                console.log("Initializing Razorpay with options:", options);
+                try {
+                    const rzp1 = new window.Razorpay(options);
+                    rzp1.on('payment.failed', function (response) {
+                        console.error("Razorpay Payment Failed", response.error);
+                        toast.error(response.error.description);
+                    });
+                    console.log("Opening Razorpay window...");
+                    rzp1.open();
+                } catch (rzpError) {
+                    console.error("Error opening Razorpay", rzpError);
+                    toast.error("Failed to open payment window");
+                }
             }
 
         } catch (error) {
-            console.error(error);
+            console.error("Order creation error:", error);
             toast.error(error?.response?.data?.message || "Order creation failed");
         } finally {
             setLoading(false);
