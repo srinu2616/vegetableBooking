@@ -1,4 +1,5 @@
 const Contact = require('../models/Contact');
+const sendEmail = require('../utils/sendEmail');
 
 // @desc    Submit contact form
 // @route   POST /api/contacts
@@ -74,6 +75,36 @@ exports.deleteMessage = async (req, res) => {
         res.status(500).json({
             success: false,
             message: 'Server error'
+        });
+    }
+};
+// @desc    Reply to a message
+// @route   POST /api/contacts/reply
+// @access  Private/Admin
+exports.replyToMessage = async (req, res) => {
+    try {
+        const { to, subject, message, contactId } = req.body;
+
+        if (!to || !subject || !message) {
+            return res.status(400).json({ message: 'Missing required fields' });
+        }
+
+        await sendEmail({ to, subject, message });
+
+        // Update status to replied
+        if (contactId) {
+            await Contact.findByIdAndUpdate(contactId, { status: 'replied' });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Reply sent successfully!'
+        });
+    } catch (error) {
+        console.error('Reply Error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to send reply email'
         });
     }
 };

@@ -10,9 +10,47 @@ const MessageList = () => {
     const [selectedMessage, setSelectedMessage] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
+    const [replying, setReplying] = useState(false);
+    const [replyData, setReplyData] = useState({ subject: '', message: '' });
+    const [sendingReply, setSendingReply] = useState(false);
+
     useEffect(() => {
         fetchMessages();
     }, []);
+
+    useEffect(() => {
+        if (selectedMessage) {
+            setReplyData({
+                subject: `Re: ${selectedMessage.subject}`,
+                message: ''
+            });
+            setReplying(false);
+        }
+    }, [selectedMessage]);
+
+    const handleSendReply = async (e) => {
+        e.preventDefault();
+        try {
+            setSendingReply(true);
+            const { data } = await api.post('/api/contacts/reply', {
+                to: selectedMessage.email,
+                subject: replyData.subject,
+                message: replyData.message,
+                contactId: selectedMessage._id
+            });
+
+            if (data.success) {
+                toast.success('Reply sent successfully!');
+                setReplying(false);
+                fetchMessages(); // Refresh list to show replied status
+            }
+        } catch (error) {
+            console.error('Reply error:', error);
+            toast.error(error.response?.data?.message || 'Failed to send reply');
+        } finally {
+            setSendingReply(false);
+        }
+    };
 
     const fetchMessages = async () => {
         try {
@@ -99,9 +137,15 @@ const MessageList = () => {
                             >
                                 <div className="flex justify-between items-start mb-2">
                                     <h3 className="font-bold text-gray-900 truncate pr-2">{msg.name}</h3>
-                                    <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 whitespace-nowrap">
-                                        {new Date(msg.createdAt).toLocaleDateString()}
-                                    </span>
+                                    {msg.status === 'replied' ? (
+                                        <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-green-100 text-green-600 whitespace-nowrap">
+                                            Replied
+                                        </span>
+                                    ) : (
+                                        <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 whitespace-nowrap">
+                                            {new Date(msg.createdAt).toLocaleDateString()}
+                                        </span>
+                                    )}
                                 </div>
                                 <p className="text-xs text-gray-500 font-medium mb-2 truncate">{msg.subject}</p>
                                 <div className="flex items-center text-xs text-gray-400 space-x-2">
@@ -148,7 +192,7 @@ const MessageList = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="p-8 flex-1">
+                                <div className="p-8 flex-1 overflow-y-auto">
                                     <div className="mb-6">
                                         <span className="text-xs uppercase font-extrabold text-primary-600 tracking-wider">Subject</span>
                                         <h3 className="text-lg font-bold text-gray-900 mt-1">{selectedMessage.subject}</h3>
@@ -159,15 +203,66 @@ const MessageList = () => {
                                             {selectedMessage.message}
                                         </div>
                                     </div>
+
+                                    {replying && (
+                                        <motion.form
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            className="mt-8 pt-8 border-t border-gray-100 space-y-4"
+                                            onSubmit={handleSendReply}
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-xs uppercase font-extrabold text-primary-600 tracking-wider">Direct Reply</span>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setReplying(false)}
+                                                    className="text-gray-400 hover:text-gray-600 text-xs font-bold"
+                                                >
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                value={replyData.subject}
+                                                onChange={(e) => setReplyData({ ...replyData, subject: e.target.value })}
+                                                className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 outline-none shadow-sm transition-all"
+                                                placeholder="Subject"
+                                                required
+                                            />
+                                            <textarea
+                                                value={replyData.message}
+                                                onChange={(e) => setReplyData({ ...replyData, message: e.target.value })}
+                                                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 outline-none shadow-sm transition-all h-32 resize-none"
+                                                placeholder="Type your response here..."
+                                                required
+                                            ></textarea>
+                                            <button
+                                                type="submit"
+                                                disabled={sendingReply}
+                                                className="w-full py-3.5 bg-primary-600 text-white font-bold rounded-2xl shadow-lg shadow-primary-500/30 hover:bg-primary-700 transition-all flex items-center justify-center space-x-2 disabled:opacity-70"
+                                            >
+                                                {sendingReply ? (
+                                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                                ) : (
+                                                    <>
+                                                        <Mail className="w-5 h-5" />
+                                                        <span>Send Response</span>
+                                                    </>
+                                                )}
+                                            </button>
+                                        </motion.form>
+                                    )}
                                 </div>
-                                <div className="p-8 bg-gray-50/50 border-t border-gray-50">
-                                    <a
-                                        href={`mailto:${selectedMessage.email}?subject=Re: ${encodeURIComponent(selectedMessage.subject)}`}
-                                        className="inline-flex items-center justify-center px-8 py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-2xl shadow-lg shadow-primary-500/30 transition-all transform hover:-translate-y-0.5 active:scale-95"
-                                    >
-                                        Reply via Email
-                                    </a>
-                                </div>
+                                {!replying && (
+                                    <div className="p-8 bg-gray-50/50 border-t border-gray-50">
+                                        <button
+                                            onClick={() => setReplying(true)}
+                                            className="inline-flex items-center justify-center px-8 py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-2xl shadow-lg shadow-primary-500/30 transition-all transform hover:-translate-y-0.5 active:scale-95"
+                                        >
+                                            Reply via Email
+                                        </button>
+                                    </div>
+                                )}
                             </motion.div>
                         ) : (
                             <div className="bg-white rounded-3xl border border-gray-100 border-dashed h-full flex items-center justify-center p-12 text-center">
