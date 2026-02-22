@@ -90,7 +90,7 @@ const Header = () => {
                         </button>
 
                         {user && (
-                            <Link to="/cart" className="relative p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-600 group">
+                            <Link to="/cart" className="relative p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors text-gray-600 dark:text-gray-300 group">
                                 <ShoppingCart className="w-5 h-5 group-hover:text-primary-600 transition-colors" />
                                 {cartCount > 0 && (
                                     <span className="absolute -top-1 -right-1 bg-primary-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
@@ -102,19 +102,19 @@ const Header = () => {
 
                         {user ? (
                             <div className="hidden md:flex items-center space-x-3">
-                                <Link to="/profile" className="flex items-center space-x-2 hover:bg-gray-50 rounded-full p-1 pr-3 transition-colors border border-transparent hover:border-gray-200">
+                                <Link to="/profile" className="flex items-center space-x-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-full p-1 pr-3 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
                                     <img
                                         src={user.profilePic}
                                         alt={user.name}
-                                        className="w-8 h-8 rounded-full object-cover border-2 border-primary-100"
+                                        className="w-8 h-8 rounded-full object-cover border-2 border-primary-100 dark:border-primary-900/30"
                                     />
-                                    <span className="text-sm font-medium text-gray-700 max-w-[100px] truncate">
+                                    <span className="text-sm font-medium text-gray-700 dark:text-gray-200 max-w-[100px] truncate">
                                         {user.name.split(' ')[0]}
                                     </span>
                                 </Link>
                                 <button
                                     onClick={logout}
-                                    className="p-2 hover:bg-red-50 text-gray-400 hover:text-red-500 rounded-full transition-colors"
+                                    className="p-2 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 hover:text-red-500 transition-colors rounded-full"
                                     title="Logout"
                                 >
                                     <LogOut className="w-5 h-5" />
@@ -131,7 +131,7 @@ const Header = () => {
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+                            className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                         >
                             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -155,8 +155,8 @@ const Header = () => {
                                     key={link.name}
                                     to={link.path}
                                     className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${location.pathname === link.path
-                                        ? 'bg-primary-50 text-primary-700'
-                                        : 'text-gray-700 hover:bg-gray-50'
+                                        ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400'
+                                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
                                         }`}
                                 >
                                     {link.name}
@@ -168,7 +168,7 @@ const Header = () => {
                             {user?.role === 'admin' && (
                                 <Link
                                     to="/admin/dashboard"
-                                    className="block px-4 py-3 rounded-lg text-base font-bold text-red-600 bg-red-50 hover:bg-red-100 transition-colors mb-2"
+                                    className="block px-4 py-3 rounded-lg text-base font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors mb-2"
                                 >
                                     Admin Panel
                                 </Link>
@@ -178,13 +178,13 @@ const Header = () => {
 
                             {user ? (
                                 <>
-                                    <Link to="/profile" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50">
-                                        <img src={user.profilePic} alt={user.name} className="w-8 h-8 rounded-full" />
-                                        <span className="font-medium text-gray-700">{user.name}</span>
+                                    <Link to="/profile" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
+                                        <img src={user.profilePic} alt={user.name} className="w-8 h-8 rounded-full border border-gray-100 dark:border-gray-700" />
+                                        <span className="font-medium text-gray-700 dark:text-gray-300">{user.name}</span>
                                     </Link>
                                     <button
                                         onClick={logout}
-                                        className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 text-left"
+                                        className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-left transition-colors"
                                     >
                                         <LogOut className="w-5 h-5" />
                                         <span className="font-medium">Sign Out</span>

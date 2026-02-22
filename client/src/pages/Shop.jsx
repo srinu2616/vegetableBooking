@@ -75,12 +75,12 @@ const Shop = () => {
                             <Loader2 className="w-10 h-10 text-primary-500 animate-spin" />
                         </div>
                     ) : vegetables.length === 0 ? (
-                        <div className="flex flex-col items-center justify-center text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
-                            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                        <div className="flex flex-col items-center justify-center text-center py-20 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm transition-colors">
+                            <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
                                 <Sprout className="w-8 h-8 text-gray-400" />
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">No vegetables found</h3>
-                            <p className="text-gray-500">Try adjusting your filters or search terms.</p>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No vegetables found</h3>
+                            <p className="text-gray-500 dark:text-gray-400">Try adjusting your filters or search terms.</p>
                             <button
                                 onClick={() => setFilters({ keyword: '', category: 'All', sort: 'oldest' })}
                                 className="mt-6 text-primary-600 font-medium hover:text-primary-700 hover:underline"

@@ -185,7 +185,7 @@ const About = () => {
             </section>
 
             {/* Values Section */}
-            <section className="bg-gray-900 dark:bg-black py-32 mx-4 md:mx-6 rounded-[3rem] mb-20 text-white text-center">
+            <section className="bg-gray-900 dark:bg-black py-32 mx-4 md:mx-6 rounded-[3rem] mb-20 text-white text-center transition-colors">
                 <div className="container mx-auto px-6">
                     <motion.h2 {...fadeIn} className="text-4xl md:text-5xl font-serif font-bold mb-16">The Values We Live By</motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

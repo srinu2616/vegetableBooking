@@ -82,7 +82,7 @@ const SearchFilter = ({ filters, setFilters, categories }) => {
                                     key={cat}
                                     onClick={() => handleCategoryChange(cat)}
                                     className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm transition-all ${filters.category === cat
-                                        ? 'bg-primary-500 text-white font-bold shadow-md shadow-primary-200 ring-2 ring-primary-100'
+                                        ? 'bg-primary-500 text-white font-bold shadow-md shadow-primary-200 dark:shadow-primary-900/20 ring-2 ring-primary-100 dark:ring-primary-900/30'
                                         : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-100 dark:border-gray-700'
                                         }`}
                                 >
@@ -117,7 +117,7 @@ const SearchFilter = ({ filters, setFilters, categories }) => {
                     {/* Clear Filters */}
                     <button
                         onClick={() => setFilters({ keyword: '', category: 'All', sort: 'oldest' })}
-                        className="w-full py-2 text-sm text-gray-500 hover:text-red-500 transition-colors border border-dashed border-gray-300 rounded-lg hover:border-red-300"
+                        className="w-full py-2 text-sm text-gray-500 hover:text-red-500 transition-colors border border-dashed border-gray-300 dark:border-gray-700 rounded-lg hover:border-red-300 dark:hover:border-red-500/50"
                     >
                         Reset All Filters
                     </button>

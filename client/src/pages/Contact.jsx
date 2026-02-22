@@ -87,7 +87,7 @@ const Contact = () => {
                             <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-8 border-b border-primary-100 dark:border-primary-900/30 pb-4">Contact Information</h2>
                             <div className="space-y-8">
                                 <div className="flex items-start space-x-6 group">
-                                    <div className="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                    <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-md border border-gray-100 dark:border-gray-700 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
                                         <MapPinIcon className="w-7 h-7" />
                                     </div>
                                     <div>
@@ -100,7 +100,7 @@ const Contact = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-start space-x-6 group">
-                                    <div className="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                    <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-md border border-gray-100 dark:border-gray-700 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
                                         <PhoneIcon className="w-7 h-7" />
                                     </div>
                                     <div>
@@ -109,7 +109,7 @@ const Contact = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-start space-x-6 group">
-                                    <div className="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                    <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-md border border-gray-100 dark:border-gray-700 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
                                         <MailIcon className="w-7 h-7" />
                                     </div>
                                     <div>

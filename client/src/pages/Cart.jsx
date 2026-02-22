@@ -13,16 +13,16 @@ const Cart = () => {
     if (cartItems.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center py-20 min-h-[60vh] text-center">
-                <div className="w-24 h-24 bg-primary-50 rounded-full flex items-center justify-center mb-6">
-                    <ShoppingBag className="w-12 h-12 text-primary-300" />
+                <div className="w-24 h-24 bg-primary-50 dark:bg-primary-900/20 rounded-full flex items-center justify-center mb-6">
+                    <ShoppingBag className="w-12 h-12 text-primary-300 dark:text-primary-500" />
                 </div>
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-2">Your cart is empty</h2>
-                <p className="text-gray-500 mb-8 max-w-sm">
+                <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-2">Your cart is empty</h2>
+                <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-sm">
                     Looks like you haven't added anything to your cart yet. Browse our shop to find fresh vegetables!
                 </p>
                 <Link
                     to="/shop"
-                    className="bg-primary-600 text-white px-8 py-3 rounded-xl font-medium shadow-lg hover:shadow-primary-500/30 hover:bg-primary-700 transition-all"
+                    className="bg-primary-600 text-white px-8 py-3 rounded-xl font-medium shadow-lg hover:shadow-primary-500/30 hover:bg-primary-700 transition-all font-bold"
                 >
                     Start Shopping
                 </Link>
@@ -32,7 +32,7 @@ const Cart = () => {
 
     return (
         <div className="max-w-6xl mx-auto">
-            <h1 className="text-3xl font-serif font-bold text-gray-900 mb-8">Shopping Cart</h1>
+            <h1 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-8">Shopping Cart</h1>
 
             <div className="flex flex-col lg:flex-row gap-8">
                 {/* Cart Items List */}

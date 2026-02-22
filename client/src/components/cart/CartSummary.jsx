@@ -8,21 +8,21 @@ const CartSummary = ({ total }) => {
     const finalTotal = total + shipping;
 
     return (
-        <div className="bg-white p-6 rounded-3xl shadow-premium border border-gray-100">
-            <h2 className="text-xl font-serif font-bold text-gray-900 mb-6">Order Summary</h2>
+        <div className="bg-white dark:bg-gray-900 p-6 rounded-3xl shadow-premium border border-gray-100 dark:border-gray-800 transition-colors">
+            <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-6">Order Summary</h2>
 
             <div className="space-y-4 mb-6">
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Subtotal</span>
                     <span>₹{total.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-600 dark:text-gray-400">
                     <span>Delivery Fee</span>
-                    <span><span className="text-green-600 font-medium">Free</span></span>
+                    <span><span className="text-green-600 dark:text-green-400 font-medium">Free</span></span>
                 </div>
-                <div className="border-t border-gray-100 pt-4 flex justify-between items-center">
-                    <span className="font-bold text-lg text-gray-900">Total</span>
-                    <span className="font-bold text-xl text-primary-600">₹{finalTotal.toFixed(2)}</span>
+                <div className="border-t border-gray-100 dark:border-gray-800 pt-4 flex justify-between items-center">
+                    <span className="font-bold text-lg text-gray-900 dark:text-white">Total</span>
+                    <span className="font-bold text-xl text-primary-600 dark:text-primary-400">₹{finalTotal.toFixed(2)}</span>
                 </div>
             </div>
 

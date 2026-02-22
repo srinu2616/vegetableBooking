@@ -87,8 +87,8 @@ const Footer = () => {
                         &copy; {new Date().getFullYear()} VegetablesHub. All rights reserved.
                     </p>
                     <div className="flex items-center space-x-6">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4 opacity-50 contrast-0 grayscale" />
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 opacity-50 contrast-0 grayscale" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4 opacity-50 dark:opacity-80 contrast-0 grayscale dark:brightness-150" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 opacity-50 dark:opacity-80 contrast-0 grayscale dark:brightness-150" />
                     </div>
                 </div>
             </div>
