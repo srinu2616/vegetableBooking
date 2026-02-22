@@ -93,8 +93,8 @@ const MessageList = () => {
                                 key={msg._id}
                                 onClick={() => setSelectedMessage(msg)}
                                 className={`p-4 rounded-2xl border cursor-pointer transition-all duration-200 ${selectedMessage?._id === msg._id
-                                        ? 'bg-primary-50 border-primary-200 shadow-sm'
-                                        : 'bg-white border-gray-100 hover:border-primary-100 hover:shadow-md'
+                                    ? 'bg-primary-50 border-primary-200 shadow-sm'
+                                    : 'bg-white border-gray-100 hover:border-primary-100 hover:shadow-md'
                                     }`}
                             >
                                 <div className="flex justify-between items-start mb-2">
@@ -162,7 +162,7 @@ const MessageList = () => {
                                 </div>
                                 <div className="p-8 bg-gray-50/50 border-t border-gray-50">
                                     <a
-                                        href={`mailto:${selectedMessage.email}?subject=Re: ${selectedMessage.subject}`}
+                                        href={`mailto:${selectedMessage.email}?subject=Re: ${encodeURIComponent(selectedMessage.subject)}`}
                                         className="inline-flex items-center justify-center px-8 py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-2xl shadow-lg shadow-primary-500/30 transition-all transform hover:-translate-y-0.5 active:scale-95"
                                     >
                                         Reply via Email
