@@ -73,7 +73,7 @@ const vegetableSchema = new mongoose.Schema({
     unit: {
         type: String,
         required: [true, 'Please specify unit'],
-        enum: ['kg', 'g', 'pieces'],
+        enum: ['kg', 'g', 'pieces', 'bunch'],
         default: 'kg'
     },
     rating: {
