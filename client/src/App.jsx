@@ -19,6 +19,7 @@ import Dashboard from './pages/admin/Dashboard';
 import ProductList from './pages/admin/ProductList';
 import ProductEdit from './pages/admin/ProductEdit';
 import OrderList from './pages/admin/OrderList';
+import MessageList from './pages/admin/MessageList';
 
 // Placeholder pages for now
 const NotFound = () => <div className="text-center py-20 text-2xl">404 - Page Not Found</div>;
@@ -76,6 +77,7 @@ function App() {
           <Route path="products/new" element={<ProductEdit />} />
           <Route path="products/:id/edit" element={<ProductEdit />} />
           <Route path="orders" element={<OrderList />} />
+          <Route path="messages" element={<MessageList />} />
         </Route>
 
         <Route path="*" element={<ResponsiveLayout><NotFound /></ResponsiveLayout>} />

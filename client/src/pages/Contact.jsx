@@ -123,14 +123,14 @@ const Contact = () => {
                         {/* Interactive Map */}
                         <div className="h-96 bg-white p-2 rounded-3xl overflow-hidden shadow-premium border border-gray-100">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.755490919163!2d77.2798833!3d15.6312411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb7191024b74681%3A0xc6cb55799a460da6!2sRTC%20Colony%2C%20Adoni%2C%20Andhra%20Pradesh%20518301!5e0!3m2!1sen!2sin!4v1708579200000!5m2!1sen!2sin"
+                                src="https://maps.google.com/maps?q=15.617214443500805,77.28922302368953&z=17&output=embed"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0, borderRadius: '1.25rem' }}
                                 allowFullScreen=""
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
-                                title="HarvestHub Location"
+                                title="HarvestHub Exact Location"
                             ></iframe>
                         </div>
                     </div>

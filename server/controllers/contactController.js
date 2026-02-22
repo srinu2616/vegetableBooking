@@ -50,4 +50,28 @@ exports.getMessages = async (req, res) => {
             message: 'Server error'
         });
     }
-};
+    // @desc    Delete a message
+    // @route   DELETE /api/contacts/:id
+    // @access  Private/Admin
+    exports.deleteMessage = async (req, res) => {
+        try {
+            const message = await Contact.findById(req.params.id);
+
+            if (!message) {
+                return res.status(404).json({ message: 'Message not found' });
+            }
+
+            await Contact.findByIdAndDelete(req.params.id);
+
+            res.status(200).json({
+                success: true,
+                message: 'Message removed'
+            });
+        } catch (error) {
+            console.error('Delete Message Error:', error);
+            res.status(500).json({
+                success: false,
+                message: 'Server error'
+            });
+        }
+    };

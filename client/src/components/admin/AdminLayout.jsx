@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, ShoppingBag, Package, LogOut, Sprout } from 'lucide-react';
+import { LayoutDashboard, ShoppingBag, Package, LogOut, Sprout, MessageSquare } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const AdminLayout = () => {
@@ -16,6 +16,7 @@ const AdminLayout = () => {
         { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
         { path: '/admin/products', icon: Sprout, label: 'Products' },
         { path: '/admin/orders', icon: Package, label: 'Orders' },
+        { path: '/admin/messages', icon: MessageSquare, label: 'Messages' },
     ];
 
     return (
