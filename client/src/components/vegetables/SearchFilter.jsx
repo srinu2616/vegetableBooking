@@ -43,14 +43,18 @@ const SearchFilter = ({ filters, setFilters, categories }) => {
             {/* Sidebar Container */}
             <div className={`
                 fixed inset-y-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-                lg:relative lg:translate-x-0 transition duration-300 ease-in-out z-40
-                bg-white lg:bg-transparent w-72 lg:w-full h-full lg:h-auto overflow-y-auto lg:overflow-visible
-                p-6 lg:p-0 shadow-2xl lg:shadow-none
+                lg:relative lg:translate-x-0 transition duration-500 ease-in-out z-[60]
+                bg-white lg:bg-transparent w-full sm:w-80 lg:w-full h-full lg:h-auto overflow-y-auto lg:overflow-visible
+                p-6 pt-24 lg:pt-0 lg:p-0 shadow-2xl lg:shadow-none
             `}>
-                <div className="flex justify-between items-center lg:hidden mb-6">
-                    <h2 className="text-xl font-serif font-bold text-gray-900">Filters</h2>
-                    <button onClick={toggleMobileFilter} className="p-2 text-gray-500 hover:bg-gray-100 rounded-full">
-                        <X className="w-5 h-5" />
+                <div className="flex justify-between items-center lg:hidden mb-8">
+                    <h2 className="text-2xl font-serif font-bold text-gray-900">Filters</h2>
+                    <button
+                        onClick={toggleMobileFilter}
+                        className="p-3 bg-gray-50 text-gray-600 hover:bg-gray-100 rounded-2xl border border-gray-100 transition-colors"
+                        aria-label="Close filters"
+                    >
+                        <X className="w-6 h-6" />
                     </button>
                 </div>
 
@@ -72,14 +76,14 @@ const SearchFilter = ({ filters, setFilters, categories }) => {
                         <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
                             Categories
                         </h3>
-                        <div className="space-y-2">
+                        <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
                             {categories.map((cat) => (
                                 <button
                                     key={cat}
                                     onClick={() => handleCategoryChange(cat)}
-                                    className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${filters.category === cat
-                                        ? 'bg-primary-50 text-primary-700 font-medium'
-                                        : 'text-gray-600 hover:bg-gray-50'
+                                    className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm transition-all ${filters.category === cat
+                                        ? 'bg-primary-500 text-white font-bold shadow-md shadow-primary-200 ring-2 ring-primary-100'
+                                        : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-100'
                                         }`}
                                 >
                                     <span>{cat}</span>
@@ -123,7 +127,7 @@ const SearchFilter = ({ filters, setFilters, categories }) => {
             {/* Overlay for mobile */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
+                    className="fixed inset-0 bg-black/40 backdrop-blur-md z-[55] lg:hidden"
                     onClick={toggleMobileFilter}
                 />
             )}

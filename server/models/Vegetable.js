@@ -95,5 +95,7 @@ const vegetableSchema = new mongoose.Schema({
 
 // Index for search
 vegetableSchema.index({ name: 'text', description: 'text' });
+vegetableSchema.index({ category: 1 });
+vegetableSchema.index({ price: 1 });
 
 module.exports = mongoose.model('Vegetable', vegetableSchema);

@@ -93,13 +93,18 @@ const About = () => {
                     <motion.div
                         {...fadeIn}
                         transition={{ delay: 0.2 }}
-                        className="relative h-[500px] rounded-[3rem] overflow-hidden shadow-2xl"
+                        className="relative h-[500px] rounded-[3rem] overflow-hidden shadow-2xl bg-gray-100"
                     >
-                        <img
-                            src="https://images.unsplash.com/photo-1488459711626-d6df23f195de?auto=format&fit=crop&q=80&w=1000"
-                            alt="Fresh Vegetables"
-                            className="w-full h-full object-cover"
-                        />
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15366.560113824101!2d77.26521796168864!3d15.63738018619623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb7df3499f57d07%3A0xc02e48e8989f6608!2sRTC%20Colony%2C%20Adoni%2C%20Andhra%20Pradesh%20518301!5e0!3m2!1sen!2sin!4v1740209300000!5m2!1sen!2sin"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="VegetablesHub Location"
+                        ></iframe>
                     </motion.div>
                 </div>
             </section>
@@ -128,15 +133,17 @@ const About = () => {
                             className="bg-white rounded-[3rem] overflow-hidden shadow-soft border border-gray-100 group hover:shadow-premium transition-all duration-500"
                         >
                             <div className="flex flex-col lg:flex-row h-full">
-                                <div className="lg:w-2/5 relative overflow-hidden h-80 lg:h-auto bg-gray-50 flex items-center justify-center p-4">
-                                    <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                                        onError={(e) => {
-                                            e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500';
-                                        }}
-                                    />
+                                <div className="lg:w-2/5 relative overflow-hidden h-80 lg:h-auto bg-gray-50 flex items-center justify-center p-2">
+                                    <div className="w-full h-full relative overflow-hidden rounded-2xl">
+                                        <img
+                                            src={member.image}
+                                            alt={member.name}
+                                            className={`w-full h-full transition-transform duration-700 group-hover:scale-105 ${member.isOwner ? 'object-contain' : 'object-contain object-top'}`}
+                                            onError={(e) => {
+                                                e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500';
+                                            }}
+                                        />
+                                    </div>
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8 text-white">
                                         <div className="flex space-x-4">
                                             <a href={`mailto:${member.email}`} className="p-2 bg-white/20 backdrop-blur-md rounded-lg hover:bg-white/40 transition-colors">

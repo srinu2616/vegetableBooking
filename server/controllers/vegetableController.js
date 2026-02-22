@@ -34,7 +34,10 @@ const getVegetables = async (req, res) => {
         else if (sort === 'oldest') sortOption.createdAt = 1;
         else sortOption.createdAt = 1; // Default to oldest (First added = Top)
 
-        const vegetables = await Vegetable.find(query).sort(sortOption);
+        const vegetables = await Vegetable.find(query)
+            .sort(sortOption)
+            .select('-reviews')
+            .lean();
 
         res.json(vegetables);
     } catch (error) {
