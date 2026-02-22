@@ -23,10 +23,10 @@ const About = () => {
         {
             name: "Kuruva Srinivasulu",
             role: "Full Stack Developer",
-            image: "/developer.jpg",
+            image: "/developer.png",
             phone: "9849642616",
             email: "kuruvas691@gmail.com",
-            bio: "A dedicated Full Stack Developer who brought the HarvestHub vision to life digitally. Srinivasulu specializes in building high-performance, user-centric web applications that solve real-world problems through elegant code.",
+            bio: "A dedicated Full Stack Developer who brought the VegetablesHub vision to life digitally. Srinivasulu specializes in building high-performance, user-centric web applications that solve real-world problems through elegant code.",
             isOwner: false
         }
     ];
@@ -96,14 +96,14 @@ const About = () => {
                         className="relative h-[500px] rounded-[3rem] overflow-hidden shadow-2xl bg-gray-100"
                     >
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15366.560113824101!2d77.26521796168864!3d15.63738018619623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb7df3499f57d07%3A0xc02e48e8989f6608!2sRTC%20Colony%2C%20Adoni%2C%20Andhra%20Pradesh%20518301!5e0!3m2!1sen!2sin!4v1740209300000!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1000!2d77.2892552!3d15.6172868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1740209300000!5m2!1sen!2sin"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            title="VegetablesHub Location"
+                            title="VegetablesHub Precise Location"
                         ></iframe>
                     </motion.div>
                 </div>
@@ -133,12 +133,12 @@ const About = () => {
                             className="bg-white rounded-[3rem] overflow-hidden shadow-soft border border-gray-100 group hover:shadow-premium transition-all duration-500"
                         >
                             <div className="flex flex-col lg:flex-row h-full">
-                                <div className="lg:w-2/5 relative overflow-hidden h-80 lg:h-auto bg-gray-50 flex items-center justify-center p-2">
-                                    <div className="w-full h-full relative overflow-hidden rounded-2xl">
+                                <div className="lg:w-2/5 relative overflow-hidden h-96 lg:h-auto bg-gray-50 flex items-center justify-center p-3">
+                                    <div className="w-full h-full relative overflow-hidden rounded-2xl aspect-[4/5] sm:aspect-square lg:aspect-[4/5]">
                                         <img
                                             src={member.image}
                                             alt={member.name}
-                                            className={`w-full h-full transition-transform duration-700 group-hover:scale-105 ${member.isOwner ? 'object-contain' : 'object-contain object-top'}`}
+                                            className={`w-full h-full transition-transform duration-700 group-hover:scale-105 object-contain`}
                                             onError={(e) => {
                                                 e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500';
                                             }}
