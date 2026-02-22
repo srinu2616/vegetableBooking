@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const User = require('../models/User');
 
 module.exports = function (passport) {
-    const serverUrl = (process.env.SERVER_URL).replace(/\/$/, '');
+    const serverUrl = (process.env.SERVER_URL || 'http://localhost:5000').replace(/\/$/, '');
     const callbackURL = `${serverUrl}/auth/google/callback`;
     console.log("Passport Callback URL Configuration:", callbackURL);
 

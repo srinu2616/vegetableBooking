@@ -28,49 +28,47 @@ const addOrderItems = async (req, res) => {
     if (orderItems && orderItems.length === 0) {
         return res.status(400).json({ message: 'No order items' });
     } else {
-        // Check stock and update
-        // Create enhanced order items with fresh data from DB
+        const vegetablesToUpdate = [];
         const enhancedOrderItems = [];
 
+        // 1. First Pass: Verify stock for ALL items
         for (const item of orderItems) {
-            // item.vegetable is the ID from the frontend
             const vegetable = await Vegetable.findById(item.vegetable);
             if (!vegetable) {
                 return res.status(404).json({ message: `Product not found: ${item.name}` });
             }
-            // Calculate deduction: (Order Qty * Pack Size)
-            // If unit is 'g', convert to kg (divide by 1000)
-            const packSize = vegetable.packSize || 1; // Default to 1 if missing
-            const unit = vegetable.unit ? vegetable.unit.toLowerCase().trim() : 'kg';
 
+            const packSize = vegetable.packSize || 1;
+            const unit = vegetable.unit ? vegetable.unit.toLowerCase().trim() : 'kg';
             let deduction = item.quantity * packSize;
 
             if (unit === 'g') {
                 deduction = deduction / 1000;
             } else if (unit === 'pieces') {
-                // For pieces, deduction is just count of pieces (Assuming stock is tracked in pieces)
-                // If stock is separate, logic might differ, but usually 'pieces' stock is simple count.
                 deduction = item.quantity * packSize;
             }
-            // For 'kg', deduction is just quantity * packSize (e.g. 2 qty * 1 kg pack = 2 kg)
 
             if (vegetable.stock < deduction) {
                 return res.status(400).json({ message: `Insufficient stock for ${item.name}. Available: ${vegetable.stock} kg, Required: ${deduction} kg` });
             }
-            vegetable.stock -= deduction;
-            await vegetable.save();
 
-            // Use fresh unit AND image from DB
             const freshImage = (vegetable.images && vegetable.images.length > 0)
                 ? vegetable.images[0]
                 : (vegetable.image || item.image);
 
+            vegetablesToUpdate.push({ vegetable, deduction });
             enhancedOrderItems.push({
                 ...item,
-                unit: vegetable.unit, // Enforce DB unit
-                image: freshImage,     // Enforce DB image (First Image)
-                packSize: vegetable.packSize || 1 // Enforce DB packSize
+                unit: vegetable.unit,
+                image: freshImage,
+                packSize: vegetable.packSize || 1
             });
+        }
+
+        // 2. Second Pass: Actually deduct stock (Now that we know all items are in stock)
+        for (const { vegetable, deduction } of vegetablesToUpdate) {
+            vegetable.stock -= deduction;
+            await vegetable.save();
         }
 
         const order = new Order({
@@ -314,12 +312,10 @@ const cancelOrder = async (req, res) => {
             for (const item of order.items) {
                 const vegetable = await Vegetable.findById(item.vegetable);
                 if (vegetable) {
-                    let addition = item.quantity;
-                    const vegetableData = await Vegetable.findById(item.vegetable); // Need fresh data for packSize
-                    const packSize = vegetableData ? (vegetableData.packSize || 1) : 1;
+                    const packSize = vegetable.packSize || 1;
                     const unit = (item.unit || 'kg').toLowerCase().trim();
 
-                    addition = item.quantity * packSize;
+                    let addition = item.quantity * packSize;
                     if (['g', 'gram', 'grams'].includes(unit)) addition = addition / 1000;
 
                     vegetable.stock += addition;
