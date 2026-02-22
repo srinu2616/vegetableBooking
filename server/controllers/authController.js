@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const { generateToken, generateRefreshToken } = require('../utils/jwt');
+const { generateToken, generateRefreshToken, verifyRefreshToken } = require('../utils/jwt');
 
 // @desc    Auth with Google
 // @route   GET /auth/google
@@ -51,7 +51,7 @@ const refreshToken = async (req, res) => {
     }
 
     try {
-        const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+        const decoded = verifyRefreshToken(refreshToken);
         const user = await User.findById(decoded.id);
 
         if (!user || user.refreshToken !== refreshToken) {

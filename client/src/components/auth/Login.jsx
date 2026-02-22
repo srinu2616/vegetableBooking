@@ -50,7 +50,6 @@ const Login = () => {
             // Use fetch or axios. Assuming api service is available or using fetch directly for now to be safe if api.js import path is unsure. 
             // Better to use fetch to localhost:5000 for now to avoid import issues, or check api.js import. 
             // Checkout.jsx used `../../services/api`. Let's allow imports to be updated in a separate chunk or just use fetch here for robustness in this large replacement.
-            // Actually, I'll import api at the top.
 
             const API_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:5000';
             const response = await fetch(`${API_URL}${endpoint}`, {
