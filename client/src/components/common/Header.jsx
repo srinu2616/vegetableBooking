@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
-import { ShoppingCart, Menu, X, Search, Leaf, User as UserIcon, LogOut } from 'lucide-react';
+import { ShoppingCart, Menu, X, Search, Leaf, User as UserIcon, LogOut, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../../context/ThemeContext';
 
 const Header = () => {
     const { user, logout } = useAuth();
     const { cartCount } = useCart();
+    const { theme, toggleTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
@@ -34,7 +36,7 @@ const Header = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-premium py-3' : 'bg-transparent py-5'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-premium py-3' : 'bg-transparent py-5'
                 }`}
         >
             <div className="container mx-auto px-4 md:px-6">
@@ -44,7 +46,7 @@ const Header = () => {
                         <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-primary-400/50 transition-all duration-300">
                             <Leaf className="w-6 h-6 text-white" />
                         </div>
-                        <span className="font-serif text-2xl font-bold text-gray-900 tracking-tight">
+                        <span className="font-serif text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
                             Vegetables<span className="text-primary-600">Hub</span>
                         </span>
                     </Link>
@@ -55,7 +57,7 @@ const Header = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`text-sm font-medium transition-colors hover:text-primary-600 relative group ${location.pathname === link.path ? 'text-primary-600' : 'text-gray-600'
+                                className={`text-sm font-medium transition-colors hover:text-primary-600 relative group ${location.pathname === link.path ? 'text-primary-600' : 'text-gray-600 dark:text-gray-300'
                                     }`}
                             >
                                 {link.name}
@@ -75,7 +77,15 @@ const Header = () => {
 
                     {/* Actions */}
                     <div className="flex items-center space-x-3 md:space-x-5">
-                        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-600">
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors text-gray-600 dark:text-gray-300"
+                            title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+                        >
+                            {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+                        </button>
+
+                        <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors text-gray-600 dark:text-gray-300">
                             <Search className="w-5 h-5" />
                         </button>
 

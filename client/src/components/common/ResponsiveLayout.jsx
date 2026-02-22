@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast';
 
 const ResponsiveLayout = ({ children }) => {
     return (
-        <div className="flex flex-col min-h-screen font-sans text-gray-900 bg-neutral-50">
+        <div className="flex flex-col min-h-screen font-sans text-gray-900 dark:text-gray-100 bg-neutral-50 dark:bg-gray-950 transition-colors duration-300">
             <Toaster
                 position="top-center"
                 toastOptions={{

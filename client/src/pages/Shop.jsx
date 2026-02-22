@@ -48,10 +48,10 @@ const Shop = () => {
         <div className="container mx-auto">
             {/* Page Header */}
             <div className="mb-8 md:mb-12 text-center">
-                <h1 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                <h1 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-4">
                     Our <span className="text-primary-600">Fresh</span> Harvest
                 </h1>
-                <p className="text-gray-500 max-w-2xl mx-auto">
+                <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
                     Browse our daily selection of premium, organic vegetables sourced directly from local farmers.
                 </p>
             </div>

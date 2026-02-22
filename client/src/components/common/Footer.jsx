@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-white border-t border-gray-100 pt-16 pb-8">
+        <footer className="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 pt-16 pb-8 transition-colors duration-300">
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Brand */}
@@ -13,16 +13,16 @@ const Footer = () => {
                             <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
                                 <Leaf className="w-5 h-5 text-white" />
                             </div>
-                            <span className="font-serif text-xl font-bold text-gray-900">
+                            <span className="font-serif text-xl font-bold text-gray-900 dark:text-white">
                                 Vegetables<span className="text-primary-600">Hub</span>
                             </span>
                         </div>
-                        <p className="text-gray-500 text-sm leading-relaxed">
+                        <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                             Bringing the freshest, organic produce directly from local farms to your table. Quality you can taste, freshness you can trust.
                         </p>
                         <div className="flex space-x-4 pt-2">
                             {[Facebook, Twitter, Instagram].map((Icon, idx) => (
-                                <a key={idx} href="#" className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-primary-500 hover:text-white transition-all duration-300">
+                                <a key={idx} href="#" className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-primary-500 hover:text-white transition-all duration-300">
                                     <Icon className="w-4 h-4" />
                                 </a>
                             ))}
@@ -31,7 +31,7 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="font-serif font-semibold text-gray-900 mb-6">Quick Links</h4>
+                        <h4 className="font-serif font-semibold text-gray-900 dark:text-white mb-6">Quick Links</h4>
                         <ul className="space-y-3">
                             {[
                                 { name: 'Home', path: '/' },
@@ -40,7 +40,7 @@ const Footer = () => {
                                 { name: 'Contact', path: '/contact' }
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link to={link.path} className="text-gray-500 hover:text-primary-600 text-sm transition-colors">
+                                    <Link to={link.path} className="text-gray-500 dark:text-gray-400 hover:text-primary-600 text-sm transition-colors">
                                         {link.name}
                                     </Link>
                                 </li>
@@ -50,11 +50,11 @@ const Footer = () => {
 
                     {/* Support */}
                     <div>
-                        <h4 className="font-serif font-semibold text-gray-900 mb-6">Support</h4>
+                        <h4 className="font-serif font-semibold text-gray-900 dark:text-white mb-6">Support</h4>
                         <ul className="space-y-3">
                             {['FAQ', 'Shipping Policy', 'Returns', 'Privacy Policy', 'Terms of Service'].map((item) => (
                                 <li key={item}>
-                                    <Link to="#" className="text-gray-500 hover:text-primary-600 text-sm transition-colors">
+                                    <Link to="#" className="text-gray-500 dark:text-gray-400 hover:text-primary-600 text-sm transition-colors">
                                         {item}
                                     </Link>
                                 </li>
@@ -64,17 +64,17 @@ const Footer = () => {
 
                     {/* Contact */}
                     <div>
-                        <h4 className="font-serif font-semibold text-gray-900 mb-6">Contact Us</h4>
+                        <h4 className="font-serif font-semibold text-gray-900 dark:text-white mb-6">Contact Us</h4>
                         <ul className="space-y-4">
-                            <li className="flex items-start space-x-3 text-sm text-gray-500">
+                            <li className="flex items-start space-x-3 text-sm text-gray-500 dark:text-gray-400">
                                 <MapPin className="w-5 h-5 text-primary-500 shrink-0" />
                                 <span>Opposite to Trends, Apsari Road,<br />Adoni, AP 518301</span>
                             </li>
-                            <li className="flex items-center space-x-3 text-sm text-gray-500">
+                            <li className="flex items-center space-x-3 text-sm text-gray-500 dark:text-gray-400">
                                 <Phone className="w-5 h-5 text-primary-500 shrink-0" />
                                 <span>+91 9849946615</span>
                             </li>
-                            <li className="flex items-center space-x-3 text-sm text-gray-500">
+                            <li className="flex items-center space-x-3 text-sm text-gray-500 dark:text-gray-400">
                                 <Mail className="w-5 h-5 text-primary-500 shrink-0" />
                                 <span>balayya375@gmail.com</span>
                             </li>
@@ -82,7 +82,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div className="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p className="text-gray-400 text-sm">
                         &copy; {new Date().getFullYear()} VegetablesHub. All rights reserved.
                     </p>
