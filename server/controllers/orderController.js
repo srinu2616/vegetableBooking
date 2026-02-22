@@ -194,7 +194,14 @@ const verifyPayment = async (req, res) => {
 // @route   GET /api/orders/myorders
 // @access  Private
 const getMyOrders = async (req, res) => {
-    const orders = await Order.find({ user: req.user._id }).sort({ createdAt: -1 });
+    // Only show COD orders OR paid Razorpay orders to the user
+    const orders = await Order.find({
+        user: req.user._id,
+        $or: [
+            { paymentMethod: 'COD' },
+            { isPaid: true }
+        ]
+    }).sort({ createdAt: -1 });
     res.json(orders);
 };
 
@@ -220,7 +227,13 @@ const getOrderById = async (req, res) => {
 // @route   GET /api/orders
 // @access  Private/Admin
 const getOrders = async (req, res) => {
-    const orders = await Order.find({}).populate('user', 'id name').sort({ createdAt: -1 });
+    // Only show COD orders OR paid Razorpay orders to the admin
+    const orders = await Order.find({
+        $or: [
+            { paymentMethod: 'COD' },
+            { isPaid: true }
+        ]
+    }).populate('user', 'id name').sort({ createdAt: -1 });
     res.json(orders);
 };
 
@@ -247,15 +260,26 @@ const updateOrderToDelivered = async (req, res) => {
 // @access  Private/Admin
 const getDashboardStats = async (req, res) => {
     try {
-        // Calculate Total Revenue from uncancelled orders
-        const orders = await Order.find({ orderStatus: { $ne: 'Cancelled' } });
+        // Calculate Total Revenue from uncancelled AND paid/COD orders
+        const orders = await Order.find({
+            orderStatus: { $ne: 'Cancelled' },
+            $or: [
+                { paymentMethod: 'COD' },
+                { isPaid: true }
+            ]
+        });
 
-        // Summing up totalPrice for all valid orders (paid/COD delivered/processing etc)
+        // Summing up totalPrice for all valid orders
         const totalRevenue = orders.reduce((acc, order) => acc + order.totalPrice, 0);
 
-        const totalOrders = await Order.countDocuments();
+        const totalOrders = await Order.countDocuments({
+            $or: [
+                { paymentMethod: 'COD' },
+                { isPaid: true }
+            ]
+        });
         const totalProducts = await Vegetable.countDocuments();
-        const totalUsers = await User.countDocuments({ role: 'user' }); // Ensure 'user' role exists, otherwise remove filter
+        const totalUsers = await User.countDocuments({ role: 'user' });
 
         res.json({
             totalRevenue,
