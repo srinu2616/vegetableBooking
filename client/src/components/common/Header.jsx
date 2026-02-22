@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
-import { ShoppingCart, Menu, X, Search, Leaf, User as UserIcon, LogOut, Moon, Sun } from 'lucide-react';
+import { ShoppingCart, Menu, X, Search, Leaf, User as UserIcon, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../context/ThemeContext';
 
 const Header = () => {
     const { user, logout } = useAuth();
     const { cartCount } = useCart();
-    const { theme, toggleTheme } = useTheme();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
@@ -77,13 +76,6 @@ const Header = () => {
 
                     {/* Actions */}
                     <div className="flex items-center space-x-3 md:space-x-5">
-                        <button
-                            onClick={toggleTheme}
-                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors text-gray-600 dark:text-gray-300"
-                            title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-                        >
-                            {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-                        </button>
 
                         <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors text-gray-600 dark:text-gray-300">
                             <Search className="w-5 h-5" />
