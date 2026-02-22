@@ -11,6 +11,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
+import Contact from './pages/Contact';
 
 import AdminRoute from './components/admin/AdminRoute';
 import AdminLayout from './components/admin/AdminLayout';
@@ -54,6 +55,7 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/auth/success" element={<AuthSuccess />} />
           <Route path="/profile" element={
             <ProtectedRoute>

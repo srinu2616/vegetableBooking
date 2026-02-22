@@ -37,6 +37,7 @@ require('./config/passport')(passport);
 const authRoutes = require('./routes/authRoutes');
 const vegetableRoutes = require('./routes/vegetableRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 
 // Middleware
 app.use(helmet());
@@ -58,6 +59,7 @@ app.get('/favicon.ico', (req, res) => res.status(204));
 app.use('/auth', authRoutes);
 app.use('/api/vegetables', vegetableRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/contacts', contactRoutes);
 
 app.get('/debug-auth', (req, res) => {
     const serverUrl = (process.env.SERVER_URL).replace(/\/$/, '');
