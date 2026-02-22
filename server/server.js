@@ -42,8 +42,17 @@ const contactRoutes = require('./routes/contactRoutes');
 // Middleware
 app.use(helmet());
 app.use(cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
+    origin: [
+        'https://vegetable-booking-frontend.vercel.app',
+        'https://vegetableshub.me',
+        'https://www.vegetableshub.me',
+        'http://localhost:5173',
+        'http://localhost:5174',
+        'http://localhost:3000'
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
 }));
 app.use(morgan('dev'));
 app.use(express.json());

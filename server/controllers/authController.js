@@ -21,12 +21,22 @@ const googleAuthCallback = async (req, res) => {
         user.refreshToken = refreshToken;
         await user.save();
 
-        // Redirect to client with tokens (in production, use secure cookies or other method)
-        // For simplicity in development, passing tokens in URL - CHANGE THIS FOR PRODUCTION
-        res.redirect(`${process.env.CLIENT_URL}/auth/success?accessToken=${accessToken}&refreshToken=${refreshToken}`);
+        // Determine destination URL
+        // Primary domain: vegetableshub.me
+        // Fallback: process.env.CLIENT_URL (usually Vercel)
+        let clientUrl = process.env.CLIENT_URL;
+
+        // If we want to be dynamic based on the request origin or session, we could logic it here.
+        // For now, ensuring vegetableshub.me is prioritized if it's the intended domain.
+        if (req.headers.referer && req.headers.referer.includes('vegetableshub.me')) {
+            clientUrl = 'https://vegetableshub.me';
+        }
+
+        res.redirect(`${clientUrl}/auth/success?accessToken=${accessToken}&refreshToken=${refreshToken}`);
     } catch (error) {
         console.error(error);
-        res.redirect(`${process.env.CLIENT_URL}/login?error=auth_failed`);
+        const clientUrl = process.env.CLIENT_URL || 'https://vegetableshub.me';
+        res.redirect(`${clientUrl}/login?error=auth_failed`);
     }
 };
 
