@@ -15,7 +15,26 @@ const MessageList = () => {
     const [sendingReply, setSendingReply] = useState(false);
 
     useEffect(() => {
-        fetchMessages();
+        let isMounted = true;
+        const fetchMessagesData = async () => {
+            try {
+                setLoading(true);
+                const { data } = await api.get('/api/contacts');
+                if (data.success && isMounted) {
+                    setMessages(data.data);
+                }
+            } catch (error) {
+                if (isMounted) {
+                    console.error('Error fetching messages:', error);
+                    toast.error('Failed to load messages');
+                }
+            } finally {
+                if (isMounted) setLoading(false);
+            }
+        };
+
+        fetchMessagesData();
+        return () => { isMounted = false; };
     }, []);
 
     useEffect(() => {
