@@ -14,7 +14,7 @@ const Footer = () => {
                                 <Leaf className="w-5 h-5 text-white" />
                             </div>
                             <span className="font-serif text-xl font-bold text-gray-900">
-                                Harvest<span className="text-primary-600">Hub</span>
+                                Vegetables<span className="text-primary-600">Hub</span>
                             </span>
                         </div>
                         <p className="text-gray-500 text-sm leading-relaxed">
@@ -84,7 +84,7 @@ const Footer = () => {
 
                 <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <p className="text-gray-400 text-sm">
-                        &copy; {new Date().getFullYear()} HarvestHub. All rights reserved.
+                        &copy; {new Date().getFullYear()} VegetablesHub. All rights reserved.
                     </p>
                     <div className="flex items-center space-x-6">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-4 opacity-50 contrast-0 grayscale" />

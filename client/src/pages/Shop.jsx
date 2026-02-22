@@ -89,7 +89,7 @@ const Shop = () => {
                             </button>
                         </div>
                     ) : (
-                        <div ref={parent} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div ref={parent} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                             {vegetables.map((vegetable) => (
                                 <VegetableCard key={vegetable._id} vegetable={vegetable} />
                             ))}

@@ -45,7 +45,7 @@ const Header = () => {
                             <Leaf className="w-6 h-6 text-white" />
                         </div>
                         <span className="font-serif text-2xl font-bold text-gray-900 tracking-tight">
-                            Harvest<span className="text-primary-600">Hub</span>
+                            Vegetables<span className="text-primary-600">Hub</span>
                         </span>
                     </Link>
 

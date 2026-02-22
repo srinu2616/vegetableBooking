@@ -26,7 +26,7 @@ const AdminLayout = () => {
                 <div className="h-20 flex items-center justify-center lg:justify-start lg:px-8 border-b border-gray-100">
                     <span className="text-2xl font-serif font-bold text-primary-600 flex items-center gap-2">
                         <ShoppingBag className="w-8 h-8" />
-                        <span className="hidden lg:block">HarvestHub</span>
+                        <span className="hidden lg:block">VegetablesHub</span>
                     </span>
                 </div>
 

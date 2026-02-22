@@ -3,7 +3,7 @@ const transporter = require('../config/email');
 const sendOrderConfirmation = async (order, user) => {
     try {
         const mailOptions = {
-            from: `"HarvestHub" <${process.env.SENDER_EMAIL}>`,
+            from: `"VegetablesHub" <${process.env.SENDER_EMAIL}>`,
             to: user.email,
             subject: `Order Confirmation - Order #${order._id}`,
             html: `

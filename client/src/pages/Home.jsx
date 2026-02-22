@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
@@ -27,9 +28,11 @@ const Home = () => {
                     <p className="max-w-xl mx-auto text-lg text-gray-100 mb-10 drop-shadow font-medium">
                         Experience the taste of nature with our hand-picked, pesticide-free vegetables. Delivered fresh within 24 hours.
                     </p>
-                    <button className="bg-primary-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-primary-500/50 hover:bg-primary-500 transition-all transform hover:-translate-y-1 ring-2 ring-white/20">
-                        Shop Now
-                    </button>
+                    <Link to="/shop">
+                        <button className="bg-primary-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-primary-500/50 hover:bg-primary-500 transition-all transform hover:-translate-y-1 ring-2 ring-white/20">
+                            Shop Now
+                        </button>
+                    </Link>
                 </div>
             </section>
         </div>

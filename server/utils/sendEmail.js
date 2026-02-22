@@ -3,13 +3,13 @@ const transporter = require('../config/email');
 const sendEmail = async ({ to, subject, message }) => {
     try {
         const mailOptions = {
-            from: `"HarvestHub" <${process.env.SENDER_EMAIL}>`,
+            from: `"VegetablesHub" <${process.env.SENDER_EMAIL}>`,
             to,
             subject,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px;">
                     <div style="text-align: center; margin-bottom: 20px;">
-                        <h1 style="color: #16a34a;">HarvestHub Response</h1>
+                        <h1 style="color: #16a34a;">VegetablesHub Response</h1>
                     </div>
 
                     <div style="background-color: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 20px;">

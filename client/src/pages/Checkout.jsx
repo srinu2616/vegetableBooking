@@ -89,7 +89,7 @@ const Checkout = () => {
                     key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_change_me',
                     amount: data.razorpayOrder.amount,
                     currency: data.razorpayOrder.currency,
-                    name: "HarvestHub",
+                    name: "VegetablesHub",
                     description: "Fresh Vegetables Order",
                     image: "https://cdn-icons-png.flaticon.com/512/3063/3063824.png",
                     order_id: data.razorpayOrder.id,
@@ -119,7 +119,7 @@ const Checkout = () => {
                         contact: address.phone
                     },
                     notes: {
-                        address: "HarvestHub Office"
+                        address: "VegetablesHub Office"
                     },
                     theme: {
                         color: "#22c55e"

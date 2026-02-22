@@ -63,7 +63,7 @@ const About = () => {
                         transition={{ delay: 0.2 }}
                         className="max-w-2xl mx-auto text-primary-50 text-xl leading-relaxed"
                     >
-                        Welcome to HarvestHub, where we believe every meal should start with the finest, freshest ingredients directly from the heart of our farms.
+                        Welcome to VegetablesHub, where we believe every meal should start with the finest, freshest ingredients directly from the heart of our farms.
                     </motion.p>
                 </div>
             </section>
@@ -74,7 +74,7 @@ const About = () => {
                     <motion.div {...fadeIn}>
                         <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6">Established with Trust</h2>
                         <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                            HarvestHub started as a small local initiative in Adoni to provide families with high-quality, chemical-free vegetables and fruits. Today, we stand as a symbol of trust and health for hundreds of customers.
+                            VegetablesHub started as a small local initiative in Adoni to provide families with high-quality, chemical-free vegetables and fruits. Today, we stand as a symbol of trust and health for hundreds of customers.
                         </p>
                         <div className="bg-white p-8 rounded-3xl shadow-soft border border-gray-100 flex items-start space-x-6">
                             <div className="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-600 shrink-0">
@@ -128,11 +128,11 @@ const About = () => {
                             className="bg-white rounded-[3rem] overflow-hidden shadow-soft border border-gray-100 group hover:shadow-premium transition-all duration-500"
                         >
                             <div className="flex flex-col lg:flex-row h-full">
-                                <div className="lg:w-2/5 relative overflow-hidden h-80 lg:h-auto">
+                                <div className="lg:w-2/5 relative overflow-hidden h-80 lg:h-auto bg-gray-50 flex items-center justify-center p-4">
                                     <img
                                         src={member.image}
                                         alt={member.name}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                                         onError={(e) => {
                                             e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500';
                                         }}
