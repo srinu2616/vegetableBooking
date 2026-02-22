@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
+import { Send, Loader2 } from 'lucide-react';
+import { Mail as MailIcon, Phone as PhoneIcon, MapPin as MapPinIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
+import api from '../services/api';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -22,15 +24,7 @@ const Contact = () => {
         setIsSubmitting(true);
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL || '/api'}/contacts`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const data = await response.json();
+            const { data } = await api.post('/api/contacts', formData);
 
             if (data.success) {
                 toast.success('Message sent successfully!');
@@ -40,16 +34,17 @@ const Contact = () => {
             }
         } catch (error) {
             console.error('Contact error:', error);
-            toast.error('Failed to send message. Please try again later.');
+            const errorMessage = error.response?.data?.message || 'Failed to send message. Please try again later.';
+            toast.error(errorMessage);
         } finally {
             setIsSubmitting(false);
         }
     };
 
     return (
-        <div className="min-h-screen pt-24 pb-12">
+        <div className="min-h-screen pt-24 pb-12 bg-gray-50/50">
             {/* Hero Section */}
-            <section className="relative py-20 bg-primary-600 rounded-3xl overflow-hidden mb-16 shadow-premium">
+            <section className="relative py-20 bg-primary-600 rounded-3xl overflow-hidden mb-16 shadow-premium mx-4 md:mx-6">
                 <div className="absolute inset-0 z-0 opacity-20">
                     <img
                         src="https://images.unsplash.com/photo-1595188448897-42289c9225f6?auto=format&fit=crop&q=80&w=2000"
@@ -77,7 +72,7 @@ const Contact = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="max-w-2xl mx-auto text-primary-50 text-lg"
+                        className="max-w-2xl mx-auto text-primary-50 text-lg md:text-xl"
                     >
                         Have a question about our products, delivery, or want to partner with us? Reach out and our team will get back to you shortly.
                     </motion.p>
@@ -89,59 +84,65 @@ const Contact = () => {
                     {/* Contact Info */}
                     <div className="space-y-12">
                         <div>
-                            <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">Contact Information</h2>
+                            <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8 border-b border-primary-100 pb-4">Contact Information</h2>
                             <div className="space-y-8">
-                                <div className="flex items-start space-x-6">
-                                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-primary-600 shrink-0">
-                                        <MapPin className="w-6 h-6" />
+                                <div className="flex items-start space-x-6 group">
+                                    <div className="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                        <MapPinIcon className="w-7 h-7" />
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-gray-900 mb-1">Our Location</h4>
-                                        <p className="text-gray-600">123 Organic Lane, Green Valley, CA 90210</p>
+                                        <h4 className="font-bold text-gray-900 mb-1">Our Location</h4>
+                                        <p className="text-gray-600 leading-relaxed font-medium">
+                                            Opposite to Trends, Apsari Road,<br />
+                                            J78Q+RMG, RTC Colonly, Adoni, <br />
+                                            Andhra Pradesh 518301
+                                        </p>
                                     </div>
                                 </div>
-                                <div className="flex items-start space-x-6">
-                                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-primary-600 shrink-0">
-                                        <Phone className="w-6 h-6" />
+                                <div className="flex items-start space-x-6 group">
+                                    <div className="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                        <PhoneIcon className="w-7 h-7" />
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-gray-900 mb-1">Phone Number</h4>
-                                        <p className="text-gray-600">+1 (555) 123-4567</p>
+                                        <h4 className="font-bold text-gray-900 mb-1">Phone Number</h4>
+                                        <p className="text-gray-600 font-medium">+91 9849642616</p>
                                     </div>
                                 </div>
-                                <div className="flex items-start space-x-6">
-                                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center text-primary-600 shrink-0">
-                                        <Mail className="w-6 h-6" />
+                                <div className="flex items-start space-x-6 group">
+                                    <div className="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
+                                        <MailIcon className="w-7 h-7" />
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-gray-900 mb-1">Email Address</h4>
-                                        <p className="text-gray-600">hello@harvesthub.com</p>
+                                        <h4 className="font-bold text-gray-900 mb-1">Email Address</h4>
+                                        <p className="text-gray-600 font-medium">balayya375@gmail.com</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Map Placeholder */}
-                        <div className="h-80 bg-gray-100 rounded-3xl overflow-hidden relative shadow-inner group">
-                            <div className="absolute inset-0 flex items-center justify-center text-gray-400 group-hover:scale-105 transition-transform duration-700">
-                                <MapPin className="w-12 h-12 mb-4 block mx-auto opacity-20" />
-                                <span className="absolute bottom-4 left-0 right-0 text-center text-sm font-medium">Interactive map coming soon</span>
-                            </div>
-                            <img
-                                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1000"
-                                alt="Map"
-                                className="w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 transition-all duration-700"
-                            />
+                        {/* Interactive Map */}
+                        <div className="h-96 bg-white p-2 rounded-3xl overflow-hidden shadow-premium border border-gray-100">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.755490919163!2d77.2798833!3d15.6312411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb7191024b74681%3A0xc6cb55799a460da6!2sRTC%20Colony%2C%20Adoni%2C%20Andhra%20Pradesh%20518301!5e0!3m2!1sen!2sin!4v1708579200000!5m2!1sen!2sin"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0, borderRadius: '1.25rem' }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="HarvestHub Location"
+                            ></iframe>
                         </div>
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-premium border border-gray-100">
-                        <h3 className="text-2xl font-serif font-bold text-gray-900 mb-8">Send Us a Message</h3>
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-premium border border-gray-100 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-full -mr-10 -mt-10 opacity-50"></div>
+                        <h3 className="text-2xl font-serif font-bold text-gray-900 mb-8 relative z-10">Send Us a Message</h3>
+                        <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium text-gray-700 ml-1">Full Name</label>
+                                    <label htmlFor="name" className="text-sm font-bold text-gray-700 ml-1 uppercase tracking-wider">Full Name</label>
                                     <input
                                         type="text"
                                         id="name"
@@ -149,12 +150,12 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        placeholder="John Doe"
-                                        className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none"
+                                        placeholder="Your Name"
+                                        className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium text-gray-700 ml-1">Email Address</label>
+                                    <label htmlFor="email" className="text-sm font-bold text-gray-700 ml-1 uppercase tracking-wider">Email Address</label>
                                     <input
                                         type="email"
                                         id="email"
@@ -162,13 +163,13 @@ const Contact = () => {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        placeholder="john@example.com"
-                                        className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none"
+                                        placeholder="Your Email"
+                                        className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium"
                                     />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="subject" className="text-sm font-medium text-gray-700 ml-1">Subject</label>
+                                <label htmlFor="subject" className="text-sm font-bold text-gray-700 ml-1 uppercase tracking-wider">Subject</label>
                                 <input
                                     type="text"
                                     id="subject"
@@ -177,11 +178,11 @@ const Contact = () => {
                                     onChange={handleChange}
                                     required
                                     placeholder="How can we help?"
-                                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none"
+                                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-medium text-gray-700 ml-1">Message</label>
+                                <label htmlFor="message" className="text-sm font-bold text-gray-700 ml-1 uppercase tracking-wider">Message</label>
                                 <textarea
                                     id="message"
                                     name="message"
@@ -190,13 +191,13 @@ const Contact = () => {
                                     required
                                     rows="5"
                                     placeholder="Type your message here..."
-                                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none resize-none"
+                                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none resize-none font-medium"
                                 ></textarea>
                             </div>
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-5 rounded-2xl shadow-lg shadow-primary-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center space-x-3 disabled:opacity-70 disabled:transform-none"
+                                className="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-5 rounded-2xl shadow-xl shadow-primary-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center space-x-3 disabled:opacity-70 disabled:transform-none"
                             >
                                 {isSubmitting ? (
                                     <>
