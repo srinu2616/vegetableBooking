@@ -33,10 +33,15 @@ const Footer = () => {
                     <div>
                         <h4 className="font-serif font-semibold text-gray-900 mb-6">Quick Links</h4>
                         <ul className="space-y-3">
-                            {['Home', 'Shop', 'About Us', 'Contact', 'Blog'].map((item) => (
-                                <li key={item}>
-                                    <Link to={item === 'Contact' ? '/contact' : '#'} className="text-gray-500 hover:text-primary-600 text-sm transition-colors">
-                                        {item}
+                            {[
+                                { name: 'Home', path: '/' },
+                                { name: 'Shop', path: '/shop' },
+                                { name: 'About Us', path: '/about' },
+                                { name: 'Contact', path: '/contact' }
+                            ].map((link) => (
+                                <li key={link.name}>
+                                    <Link to={link.path} className="text-gray-500 hover:text-primary-600 text-sm transition-colors">
+                                        {link.name}
                                     </Link>
                                 </li>
                             ))}
@@ -63,15 +68,15 @@ const Footer = () => {
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3 text-sm text-gray-500">
                                 <MapPin className="w-5 h-5 text-primary-500 shrink-0" />
-                                <span>123 Organic Lane, Green Valley, CA 90210</span>
+                                <span>Opposite to Trends, Apsari Road,<br />Adoni, AP 518301</span>
                             </li>
                             <li className="flex items-center space-x-3 text-sm text-gray-500">
                                 <Phone className="w-5 h-5 text-primary-500 shrink-0" />
-                                <span>+1 (555) 123-4567</span>
+                                <span>+91 9849946615</span>
                             </li>
                             <li className="flex items-center space-x-3 text-sm text-gray-500">
                                 <Mail className="w-5 h-5 text-primary-500 shrink-0" />
-                                <span>hello@harvesthub.com</span>
+                                <span>balayya375@gmail.com</span>
                             </li>
                         </ul>
                     </div>

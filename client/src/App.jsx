@@ -12,6 +12,7 @@ import Checkout from './pages/Checkout';
 import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
 import Contact from './pages/Contact';
+import About from './pages/About';
 
 import AdminRoute from './components/admin/AdminRoute';
 import AdminLayout from './components/admin/AdminLayout';
@@ -63,6 +64,7 @@ function App() {
               <Profile />
             </ProtectedRoute>
           } />
+          <Route path="/about" element={<About />} />
         </Route>
 
         {/* Admin Routes - Wrapped in AdminLayout */}
