@@ -109,6 +109,12 @@ const loginUser = async (req, res) => {
         const user = await User.findOne({ email }).select('+password');
 
         if (user && (await user.matchPassword(password))) {
+            // Extra check to ensure admin role for the configured admin email
+            if (user.email === (process.env.ADMIN_EMAIL || '').trim() && user.role !== 'admin') {
+                user.role = 'admin';
+                await user.save();
+            }
+
             const accessToken = generateToken(user._id);
             const refreshToken = generateRefreshToken(user._id);
 

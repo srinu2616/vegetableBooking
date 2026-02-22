@@ -24,18 +24,18 @@ const Contact = () => {
         setIsSubmitting(true);
 
         try {
-            const { data } = await api.post('/api/contacts', formData);
+            const response = await api.post('/api/contacts', formData);
 
-            if (data.success) {
-                toast.success('Message sent successfully!');
+            if (response.data.success) {
+                toast.success(response.data.message || 'Message sent! We\'ll get back to you soon.');
                 setFormData({ name: '', email: '', subject: '', message: '' });
             } else {
-                toast.error(data.message || 'Something went wrong');
+                toast.error(response.data.message || 'Failed to send message.');
             }
         } catch (error) {
-            console.error('Contact error:', error);
-            const errorMessage = error.response?.data?.message || 'Failed to send message. Please try again later.';
-            toast.error(errorMessage);
+            console.error('Submission Error:', error);
+            const errorMsg = error.response?.data?.message || 'Failed to send message. Please try again later.';
+            toast.error(errorMsg);
         } finally {
             setIsSubmitting(false);
         }
