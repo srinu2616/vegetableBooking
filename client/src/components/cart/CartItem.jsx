@@ -31,9 +31,9 @@ const CartItem = ({ item }) => {
     };
 
     return (
-        <div className="flex items-center p-4 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl shadow-sm mb-4 transition-all hover:shadow-md">
+        <div className="flex items-center p-4 bg-white border border-gray-100 rounded-2xl shadow-sm mb-4 transition-all hover:shadow-md">
             {/* Image */}
-            <div className="w-20 h-20 flex-shrink-0 bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden">
+            <div className="w-20 h-20 flex-shrink-0 bg-gray-50 rounded-xl overflow-hidden">
                 <img
                     src={item.image}
                     alt={item.name}
@@ -44,8 +44,8 @@ const CartItem = ({ item }) => {
             {/* Content */}
             <div className="ml-4 flex-1 flex flex-col sm:flex-row sm:items-center justify-between">
                 <div>
-                    <h3 className="font-serif font-bold text-gray-900 dark:text-white">{item.name}</h3>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm">
+                    <h3 className="font-serif font-bold text-gray-900">{item.name}</h3>
+                    <p className="text-gray-500 text-sm">
                         ₹{item.price} / {(item.packSize === 1 && /\d/.test(item.unit)) ? '' : (item.packSize || 1)} {item.unit}
                     </p>
                 </div>
@@ -53,11 +53,11 @@ const CartItem = ({ item }) => {
                 {/* Controls */}
                 <div className="flex items-center justify-between mt-4 sm:mt-0 space-x-6">
                     {/* Quantity */}
-                    <div className="flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 rounded-lg p-1">
+                    <div className="flex items-center space-x-3 bg-gray-50 rounded-lg p-1">
                         <button
                             onClick={() => updateQuantity(item._id, item.quantity - 1)}
                             disabled={item.quantity <= 1}
-                            className={`p-1 rounded-md transition-colors ${item.quantity <= 1 ? 'text-gray-300 dark:text-gray-600' : 'text-gray-500 hover:bg-white dark:hover:bg-gray-700 hover:text-primary-600 shadow-sm'
+                            className={`p-1 rounded-md transition-colors ${item.quantity <= 1 ? 'text-gray-300' : 'text-gray-500 hover:bg-white hover:text-primary-600 shadow-sm'
                                 }`}
                         >
                             <Minus className="w-4 h-4" />
@@ -69,13 +69,13 @@ const CartItem = ({ item }) => {
                                 value={localQuantity}
                                 onChange={handleInputChange}
                                 onBlur={handleBlur}
-                                className="w-12 text-center bg-transparent font-medium text-gray-900 dark:text-white outline-none p-0"
+                                className="w-12 text-center bg-transparent font-medium text-gray-900 outline-none p-0"
                             />
-                            <span className="text-xs text-gray-500 dark:text-gray-400 font-medium ml-1 whitespace-nowrap">{(item.packSize === 1 && /\d/.test(item.unit)) ? '' : (item.packSize || 1)} {item.unit}</span>
+                            <span className="text-xs text-gray-500 font-medium ml-1 whitespace-nowrap">{(item.packSize === 1 && /\d/.test(item.unit)) ? '' : (item.packSize || 1)} {item.unit}</span>
                         </div>
                         <button
                             onClick={() => updateQuantity(item._id, item.quantity + 1)}
-                            className="p-1 text-gray-500 hover:bg-white dark:hover:bg-gray-700 hover:text-primary-600 rounded-md shadow-sm transition-colors"
+                            className="p-1 text-gray-500 hover:bg-white hover:text-primary-600 rounded-md shadow-sm transition-colors"
                         >
                             <Plus className="w-4 h-4" />
                         </button>
@@ -83,7 +83,7 @@ const CartItem = ({ item }) => {
 
                     {/* Total Price & Delete */}
                     <div className="flex items-center space-x-4">
-                        <span className="font-bold text-gray-900 dark:text-white">
+                        <span className="font-bold text-gray-900">
                             ₹{(item.price * item.quantity).toFixed(2)}
                         </span>
                         <button

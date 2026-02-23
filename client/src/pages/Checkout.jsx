@@ -174,15 +174,15 @@ const Checkout = () => {
 
     return (
         <div className="max-w-6xl mx-auto">
-            <h1 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-8">Checkout</h1>
+            <h1 className="text-3xl font-serif font-bold text-gray-900 mb-8">Checkout</h1>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Left Column: Address */}
                 <div className="lg:col-span-2">
                     {!isEditingAddress ? (
-                        <div className="bg-white dark:bg-gray-900 p-6 rounded-3xl shadow-premium border border-gray-100 dark:border-gray-800 transition-colors">
+                        <div className="bg-white p-6 rounded-3xl shadow-premium border border-gray-100 transition-colors">
                             <div className="flex justify-between items-start mb-4">
-                                <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white">Delivery Address</h2>
+                                <h2 className="text-xl font-serif font-bold text-gray-900">Delivery Address</h2>
                                 <button
                                     onClick={() => setIsEditingAddress(true)}
                                     className="text-primary-600 font-medium hover:underline text-sm"
@@ -190,8 +190,8 @@ const Checkout = () => {
                                     Change Address
                                 </button>
                             </div>
-                            <div className="text-gray-600 dark:text-gray-400 space-y-1">
-                                <p className="font-semibold text-gray-900 dark:text-white">{user.name}</p>
+                            <div className="text-gray-600 space-y-1">
+                                <p className="font-semibold text-gray-900">{user.name}</p>
                                 <p>{address.address}</p>
                                 <p>{address.city}, {address.postalCode}</p>
                                 <p>{address.country}</p>
@@ -210,10 +210,10 @@ const Checkout = () => {
                 <div className="lg:col-span-1 space-y-6">
                     <OrderSummary cartItems={cartItems} total={cartTotal} />
 
-                    <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 transition-colors mb-6">
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Payment Method</h3>
+                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-colors mb-6">
+                        <h3 className="text-lg font-bold text-gray-900 mb-4">Payment Method</h3>
                         <div className="space-y-3">
-                            <label className={`flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${paymentMethod === 'Razorpay' ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/10' : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'}`}>
+                            <label className={`flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${paymentMethod === 'Razorpay' ? 'border-primary-500 bg-primary-50' : 'border-gray-200 hover:border-gray-300'}`}>
                                 <div className="flex items-center">
                                     <input
                                         type="radio"
@@ -223,11 +223,11 @@ const Checkout = () => {
                                         onChange={(e) => setPaymentMethod(e.target.value)}
                                         className="w-5 h-5 text-primary-600 focus:ring-primary-500 border-gray-300"
                                     />
-                                    <span className="ml-3 font-semibold text-gray-700 dark:text-gray-300">Online Payment (Razorpay)</span>
+                                    <span className="ml-3 font-semibold text-gray-700">Online Payment (Razorpay)</span>
                                 </div>
                             </label>
 
-                            <label className={`flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${paymentMethod === 'COD' ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/10' : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600'}`}>
+                            <label className={`flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${paymentMethod === 'COD' ? 'border-primary-500 bg-primary-50' : 'border-gray-200 hover:border-gray-300'}`}>
                                 <div className="flex items-center">
                                     <input
                                         type="radio"
@@ -237,7 +237,7 @@ const Checkout = () => {
                                         onChange={(e) => setPaymentMethod(e.target.value)}
                                         className="w-5 h-5 text-primary-600 focus:ring-primary-500 border-gray-300"
                                     />
-                                    <span className="ml-3 font-semibold text-gray-700 dark:text-gray-300">Cash on Delivery</span>
+                                    <span className="ml-3 font-semibold text-gray-700">Cash on Delivery</span>
                                 </div>
                             </label>
                         </div>

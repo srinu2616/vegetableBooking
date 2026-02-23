@@ -44,7 +44,7 @@ const ProductDetails = () => {
         addToCart(cartItem, quantity);
     };
 
-    if (loading) return <div className="flex justify-center items-center h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors">Loading...</div>;
+    if (loading) return <div className="flex justify-center items-center h-screen bg-white text-gray-900 transition-colors">Loading...</div>;
     if (!product) return null;
 
     // Handle legacy image vs new images array
@@ -60,7 +60,7 @@ const ProductDetails = () => {
         <div className="container mx-auto px-4 py-8">
             <button
                 onClick={() => navigate(-1)}
-                className="flex items-center text-gray-500 dark:text-gray-400 hover:text-primary-600 transition-colors"
+                className="flex items-center text-gray-500 hover:text-primary-600 transition-colors"
             >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to Shop
@@ -70,7 +70,7 @@ const ProductDetails = () => {
                 {/* Image Gallery */}
                 <div className="space-y-4">
                     <div
-                        className="aspect-square bg-gray-50 dark:bg-gray-800 rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-800 relative group cursor-zoom-in"
+                        className="aspect-square bg-gray-50 rounded-3xl overflow-hidden border border-gray-100 relative group cursor-zoom-in"
                         onClick={() => setIsExpanded(true)}
                     >
                         <img
@@ -94,7 +94,7 @@ const ProductDetails = () => {
                                 <button
                                     key={idx}
                                     onClick={() => setSelectedImage(idx)}
-                                    className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all ${selectedImage === idx ? 'border-primary-500 ring-2 ring-primary-200 dark:ring-primary-900/40' : 'border-transparent hover:border-gray-300 dark:hover:border-gray-600'
+                                    className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all ${selectedImage === idx ? 'border-primary-500 ring-2 ring-primary-200' : 'border-transparent hover:border-gray-300'
                                         }`}
                                 >
                                     <img
@@ -114,13 +114,13 @@ const ProductDetails = () => {
                     <div className="flex justify-between items-start mb-4">
                         <div>
                             <p className="text-sm text-primary-600 font-semibold uppercase tracking-wider mb-2">{product.category}</p>
-                            <h1 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mb-2">{product.name}</h1>
+                            <h1 className="text-4xl font-serif font-bold text-gray-900 mb-2">{product.name}</h1>
                         </div>
                         <div className="flex space-x-2">
-                            <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-red-500 transition-colors">
+                            <button className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-red-500 transition-colors">
                                 <Heart className="w-6 h-6" />
                             </button>
-                            <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 hover:text-blue-500 transition-colors">
+                            <button className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-blue-500 transition-colors">
                                 <Share2 className="w-6 h-6" />
                             </button>
                         </div>
@@ -129,7 +129,7 @@ const ProductDetails = () => {
                     <div className="flex items-center space-x-4 mb-6">
                         <div className="flex items-center text-yellow-500">
                             <Star className="w-5 h-5 fill-current" />
-                            <span className="ml-1 font-bold text-gray-900 dark:text-white">{product.rating || 5}</span>
+                            <span className="ml-1 font-bold text-gray-900">{product.rating || 5}</span>
                         </div>
                         <span className="text-gray-300">|</span>
                         <span className="text-gray-500">{product.numReviews} reviews</span>
@@ -141,8 +141,8 @@ const ProductDetails = () => {
 
                     {/* Short Description */}
                     {product.shortDescription && (
-                        <div className="bg-primary-50 dark:bg-primary-900/20 p-4 rounded-xl border border-primary-100 dark:border-primary-900/30 mb-6">
-                            <p className="text-primary-800 dark:text-primary-200 font-medium">
+                        <div className="bg-primary-50 p-4 rounded-xl border border-primary-100 mb-6">
+                            <p className="text-primary-800 font-medium">
                                 {product.shortDescription}
                             </p>
                         </div>
@@ -150,28 +150,28 @@ const ProductDetails = () => {
 
                     {/* Long Description */}
                     <div className="mb-8">
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Description</h3>
-                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap">
+                        <h3 className="text-lg font-bold text-gray-900 mb-2">Description</h3>
+                        <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
                             {product.description}
                         </p>
                     </div>
 
-                    <div className="flex items-center justify-between p-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl mb-8">
+                    <div className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl mb-8">
                         <div>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">Price per {product.packSize || 1} {product.unit}</p>
-                            <p className="text-3xl font-bold text-gray-900 dark:text-white">₹{product.price}</p>
+                            <p className="text-gray-500 text-sm mb-1">Price per {product.packSize || 1} {product.unit}</p>
+                            <p className="text-3xl font-bold text-gray-900">₹{product.price}</p>
                         </div>
-                        <div className="flex items-center bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-1">
+                        <div className="flex items-center bg-white rounded-xl shadow-sm border border-gray-200 p-1">
                             <button
                                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                className="w-10 h-10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                                className="w-10 h-10 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
                             >
                                 <Minus className="w-4 h-4" />
                             </button>
-                            <span className="w-12 text-center font-bold text-gray-900 dark:text-white">{quantity}</span>
+                            <span className="w-12 text-center font-bold text-gray-900">{quantity}</span>
                             <button
                                 onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                                className="w-10 h-10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                                className="w-10 h-10 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
                             >
                                 <Plus className="w-4 h-4" />
                             </button>

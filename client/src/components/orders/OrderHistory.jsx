@@ -29,11 +29,11 @@ const OrderHistory = () => {
 
     const getStatusColor = (status) => {
         switch (status) {
-            case 'Delivered': return 'text-green-600 bg-green-50 dark:bg-green-900/20 dark:text-green-400';
-            case 'Shipped': return 'text-blue-600 bg-blue-50 dark:bg-blue-900/20 dark:text-blue-400';
-            case 'Processing': return 'text-yellow-600 bg-yellow-50 dark:bg-yellow-900/20 dark:text-yellow-400';
-            case 'Cancelled': return 'text-red-600 bg-red-50 dark:bg-red-900/20 dark:text-red-400';
-            default: return 'text-gray-600 bg-gray-50 dark:bg-gray-800 dark:text-gray-400';
+            case 'Delivered': return 'text-green-600 bg-green-50';
+            case 'Shipped': return 'text-blue-600 bg-blue-50';
+            case 'Processing': return 'text-yellow-600 bg-yellow-50';
+            case 'Cancelled': return 'text-red-600 bg-red-50';
+            default: return 'text-gray-600 bg-gray-50';
         }
     };
 
@@ -82,14 +82,14 @@ const OrderHistory = () => {
 
     return (
         <div className="space-y-6">
-            <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white">Order History</h2>
+            <h2 className="text-xl font-serif font-bold text-gray-900">Order History</h2>
             <div className="space-y-4">
                 {orders.map((order) => (
-                    <div key={order._id} className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-                        <div className="flex flex-col md:flex-row justify-between md:items-center mb-4 pb-4 border-b border-gray-50 dark:border-gray-800">
+                    <div key={order._id} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
+                        <div className="flex flex-col md:flex-row justify-between md:items-center mb-4 pb-4 border-b border-gray-50">
                             <div>
                                 <span className="text-xs text-gray-400 uppercase tracking-wide">Order ID</span>
-                                <p className="font-mono text-sm font-medium text-gray-700 dark:text-gray-300">#{order._id}</p>
+                                <p className="font-mono text-sm font-medium text-gray-700">#{order._id}</p>
                             </div>
                             <div className="mt-2 md:mt-0 flex items-center space-x-3">
                                 <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center space-x-1 ${getStatusColor(order.orderStatus)}`}>
@@ -105,9 +105,9 @@ const OrderHistory = () => {
 
                         <div className="space-y-3">
                             {order.items.map((item, index) => (
-                                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl transition-colors">
+                                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl transition-colors">
                                     <div className="flex items-center space-x-4">
-                                        <div className="w-16 h-16 bg-white dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex-shrink-0 transition-colors">
+                                        <div className="w-16 h-16 bg-white rounded-lg overflow-hidden border border-gray-200 flex-shrink-0 transition-colors">
                                             <img
                                                 src={item.image || 'https://placehold.co/100x100?text=No+Image'}
                                                 alt={item.name}
@@ -115,12 +115,12 @@ const OrderHistory = () => {
                                             />
                                         </div>
                                         <div>
-                                            <p className="font-bold text-gray-900 dark:text-white">{item.name}</p>
+                                            <p className="font-bold text-gray-900">{item.name}</p>
                                             <p className="text-sm text-gray-500">₹{item.price} X {item.quantity} x {(item.packSize === 1 && /\d/.test(item.unit || '')) ? '' : (item.packSize || 1)} {item.unit || 'kg'}</p>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <p className="font-bold text-gray-900 dark:text-white">₹{(item.price * item.quantity).toFixed(2)}</p>
+                                        <p className="font-bold text-gray-900">₹{(item.price * item.quantity).toFixed(2)}</p>
                                         <p className="text-xs text-gray-400">Total</p>
                                     </div>
                                 </div>

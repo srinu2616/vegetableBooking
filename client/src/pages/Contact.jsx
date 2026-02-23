@@ -42,7 +42,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="min-h-screen pt-24 pb-12 bg-gray-50/50 dark:bg-gray-950 transition-colors duration-300">
+        <div className="min-h-screen pt-24 pb-12 bg-gray-50/50 transition-colors duration-300">
             {/* Hero Section */}
             <section className="relative py-20 bg-primary-600 rounded-3xl overflow-hidden mb-16 shadow-premium mx-4 md:mx-6">
                 <div className="absolute inset-0 z-0 opacity-20">
@@ -84,15 +84,15 @@ const Contact = () => {
                     {/* Contact Info */}
                     <div className="space-y-12">
                         <div>
-                            <h2 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-8 border-b border-primary-100 dark:border-primary-900/30 pb-4">Contact Information</h2>
+                            <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8 border-b border-primary-100 pb-4">Contact Information</h2>
                             <div className="space-y-8">
                                 <div className="flex items-start space-x-6 group">
-                                    <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-md border border-gray-100 dark:border-gray-700 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
+                                    <div className="w-14 h-14 bg-white shadow-md border border-gray-100 rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
                                         <MapPinIcon className="w-7 h-7" />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-gray-900 dark:text-white mb-1">Our Location</h4>
-                                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                                        <h4 className="font-bold text-gray-900 mb-1">Our Location</h4>
+                                        <p className="text-gray-600 leading-relaxed font-medium">
                                             Opposite to Trends, Apsari Road,<br />
                                             J78Q+RMG, RTC Colonly, Adoni, <br />
                                             Andhra Pradesh 518301
@@ -100,28 +100,28 @@ const Contact = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-start space-x-6 group">
-                                    <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-md border border-gray-100 dark:border-gray-700 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
+                                    <div className="w-14 h-14 bg-white shadow-md border border-gray-100 rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
                                         <PhoneIcon className="w-7 h-7" />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-gray-900 dark:text-white mb-1">Phone Number</h4>
-                                        <p className="text-gray-600 dark:text-gray-400 font-medium">+91 9849642616</p>
+                                        <h4 className="font-bold text-gray-900 mb-1">Phone Number</h4>
+                                        <p className="text-gray-600 font-medium">+91 9849642616</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start space-x-6 group">
-                                    <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-md border border-gray-100 dark:border-gray-700 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0 group-hover:bg-primary-600 dark:group-hover:bg-primary-500 group-hover:text-white transition-all duration-300">
+                                    <div className="w-14 h-14 bg-white shadow-md border border-gray-100 rounded-2xl flex items-center justify-center text-primary-600 shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-all duration-300">
                                         <MailIcon className="w-7 h-7" />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-gray-900 dark:text-white mb-1">Email Address</h4>
-                                        <p className="text-gray-600 dark:text-gray-400 font-medium">balayya375@gmail.com</p>
+                                        <h4 className="font-bold text-gray-900 mb-1">Email Address</h4>
+                                        <p className="text-gray-600 font-medium">balayya375@gmail.com</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Interactive Map */}
-                        <div className="h-96 bg-white dark:bg-gray-900 p-2 rounded-3xl overflow-hidden shadow-premium border border-gray-100 dark:border-gray-800 transition-colors">
+                        <div className="h-96 bg-white p-2 rounded-3xl overflow-hidden shadow-premium border border-gray-100 transition-colors">
                             <iframe
                                 src="https://maps.google.com/maps?q=15.617214443500805,77.28922302368953&z=17&output=embed"
                                 width="100%"
@@ -136,13 +136,13 @@ const Contact = () => {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-white dark:bg-gray-900 p-8 md:p-12 rounded-[2.5rem] shadow-premium border border-gray-100 dark:border-gray-800 relative overflow-hidden transition-colors duration-300">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 dark:bg-primary-900/20 rounded-bl-full -mr-10 -mt-10 opacity-50"></div>
-                        <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white relative z-10 mb-8">Send Us a Message</h3>
+                    <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-premium border border-gray-100 relative overflow-hidden transition-colors duration-300">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-full -mr-10 -mt-10 opacity-50"></div>
+                        <h3 className="text-2xl font-serif font-bold text-gray-900 relative z-10 mb-8">Send Us a Message</h3>
                         <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1 uppercase tracking-wider">Full Name</label>
+                                    <label htmlFor="name" className="text-sm font-bold text-gray-700 ml-1 uppercase tracking-wider">Full Name</label>
                                     <input
                                         type="text"
                                         id="name"
@@ -151,11 +151,11 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         placeholder="Your Name"
-                                        className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium text-gray-900 dark:text-gray-100"
+                                        className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium text-gray-900"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1 uppercase tracking-wider">Email Address</label>
+                                    <label htmlFor="email" className="text-sm font-bold text-gray-700 ml-1 uppercase tracking-wider">Email Address</label>
                                     <input
                                         type="email"
                                         id="email"
@@ -164,12 +164,12 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         placeholder="Your Email"
-                                        className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium text-gray-900 dark:text-gray-100"
+                                        className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium text-gray-900"
                                     />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="subject" className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1 uppercase tracking-wider">Subject</label>
+                                <label htmlFor="subject" className="text-sm font-bold text-gray-700 ml-1 uppercase tracking-wider">Subject</label>
                                 <input
                                     type="text"
                                     id="subject"
@@ -178,11 +178,11 @@ const Contact = () => {
                                     onChange={handleChange}
                                     required
                                     placeholder="How can we help?"
-                                    className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium text-gray-900 dark:text-gray-100"
+                                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none font-medium text-gray-900"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-bold text-gray-700 dark:text-gray-300 ml-1 uppercase tracking-wider">Message</label>
+                                <label htmlFor="message" className="text-sm font-bold text-gray-700 ml-1 uppercase tracking-wider">Message</label>
                                 <textarea
                                     id="message"
                                     name="message"
@@ -191,7 +191,7 @@ const Contact = () => {
                                     required
                                     rows="5"
                                     placeholder="Type your message here..."
-                                    className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none resize-none font-medium text-gray-900 dark:text-gray-100"
+                                    className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all outline-none resize-none font-medium text-gray-900"
                                 ></textarea>
                             </div>
                             <button

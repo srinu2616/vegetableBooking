@@ -34,7 +34,7 @@ const Header = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-premium py-3' : 'bg-transparent py-5'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-premium py-3' : 'bg-transparent py-5'
                 }`}
         >
             <div className="container mx-auto px-4 md:px-6">
@@ -44,7 +44,7 @@ const Header = () => {
                         <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-primary-400/50 transition-all duration-300">
                             <Leaf className="w-6 h-6 text-white" />
                         </div>
-                        <span className="font-serif text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+                        <span className="font-serif text-2xl font-bold text-gray-900 tracking-tight">
                             Vegetables<span className="text-primary-600">Hub</span>
                         </span>
                     </Link>
@@ -55,7 +55,7 @@ const Header = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`text-sm font-medium transition-colors hover:text-primary-600 relative group ${location.pathname === link.path ? 'text-primary-600' : 'text-gray-600 dark:text-gray-300'
+                                className={`text-sm font-medium transition-colors hover:text-primary-600 relative group ${location.pathname === link.path ? 'text-primary-600' : 'text-gray-600'
                                     }`}
                             >
                                 {link.name}
@@ -76,12 +76,12 @@ const Header = () => {
                     {/* Actions */}
                     <div className="flex items-center space-x-3 md:space-x-5">
 
-                        <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors text-gray-600 dark:text-gray-300">
+                        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-600">
                             <Search className="w-5 h-5" />
                         </button>
 
                         {user && (
-                            <Link to="/cart" className="relative p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors text-gray-600 dark:text-gray-300 group">
+                            <Link to="/cart" className="relative p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-600 group">
                                 <ShoppingCart className="w-5 h-5 group-hover:text-primary-600 transition-colors" />
                                 {cartCount > 0 && (
                                     <span className="absolute -top-1 -right-1 bg-primary-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
@@ -93,19 +93,19 @@ const Header = () => {
 
                         {user ? (
                             <div className="hidden md:flex items-center space-x-3">
-                                <Link to="/profile" className="flex items-center space-x-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-full p-1 pr-3 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                                <Link to="/profile" className="flex items-center space-x-2 hover:bg-gray-50 rounded-full p-1 pr-3 transition-colors border border-transparent hover:border-gray-200">
                                     <img
                                         src={user.profilePic}
                                         alt={user.name}
-                                        className="w-8 h-8 rounded-full object-cover border-2 border-primary-100 dark:border-primary-900/30"
+                                        className="w-8 h-8 rounded-full object-cover border-2 border-primary-100"
                                     />
-                                    <span className="text-sm font-medium text-gray-700 dark:text-gray-200 max-w-[100px] truncate">
+                                    <span className="text-sm font-medium text-gray-700 max-w-[100px] truncate">
                                         {user.name.split(' ')[0]}
                                     </span>
                                 </Link>
                                 <button
                                     onClick={logout}
-                                    className="p-2 hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 hover:text-red-500 transition-colors rounded-full"
+                                    className="p-2 hover:bg-red-50 text-gray-400 hover:text-red-500 transition-colors rounded-full"
                                     title="Logout"
                                 >
                                     <LogOut className="w-5 h-5" />
@@ -122,7 +122,7 @@ const Header = () => {
 
                         {/* Mobile Menu Button */}
                         <button
-                            className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                         >
                             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -146,8 +146,8 @@ const Header = () => {
                                     key={link.name}
                                     to={link.path}
                                     className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${location.pathname === link.path
-                                        ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400'
-                                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                                        ? 'bg-primary-50 text-primary-700'
+                                        : 'text-gray-700 hover:bg-gray-50'
                                         }`}
                                 >
                                     {link.name}
@@ -159,7 +159,7 @@ const Header = () => {
                             {user?.role === 'admin' && (
                                 <Link
                                     to="/admin/dashboard"
-                                    className="block px-4 py-3 rounded-lg text-base font-bold text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors mb-2"
+                                    className="block px-4 py-3 rounded-lg text-base font-bold text-red-600 bg-red-50 hover:bg-red-100 transition-colors mb-2"
                                 >
                                     Admin Panel
                                 </Link>
@@ -169,13 +169,13 @@ const Header = () => {
 
                             {user ? (
                                 <>
-                                    <Link to="/profile" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800">
-                                        <img src={user.profilePic} alt={user.name} className="w-8 h-8 rounded-full border border-gray-100 dark:border-gray-700" />
-                                        <span className="font-medium text-gray-700 dark:text-gray-300">{user.name}</span>
+                                    <Link to="/profile" className="flex items-center space-x-3 px-4 py-3 rounded-lg hover:bg-gray-50">
+                                        <img src={user.profilePic} alt={user.name} className="w-8 h-8 rounded-full border border-gray-100" />
+                                        <span className="font-medium text-gray-700">{user.name}</span>
                                     </Link>
                                     <button
                                         onClick={logout}
-                                        className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 text-left transition-colors"
+                                        className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 text-left transition-colors"
                                     >
                                         <LogOut className="w-5 h-5" />
                                         <span className="font-medium">Sign Out</span>

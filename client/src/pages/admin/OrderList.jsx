@@ -36,10 +36,10 @@ const OrderList = () => {
 
     const getStatusBadge = (status) => {
         const styles = {
-            'Processing': 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-400',
-            'Shipped': 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400',
-            'Delivered': 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400',
-            'Cancelled': 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400',
+            'Processing': 'bg-yellow-50 text-yellow-700',
+            'Shipped': 'bg-blue-50 text-blue-700',
+            'Delivered': 'bg-green-50 text-green-700',
+            'Cancelled': 'bg-red-50 text-red-700',
         };
         return (
             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${styles[status] || 'bg-gray-100'}`}>
@@ -51,17 +51,17 @@ const OrderList = () => {
     return (
         <div>
             <div className="mb-8">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Orders</h1>
+                <h1 className="text-2xl font-bold text-gray-900">Orders</h1>
             </div>
 
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                 {orders.map((order) => (
-                    <div key={order._id} className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all">
+                    <div key={order._id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all">
                         {/* Card Header */}
-                        <div className="p-4 bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+                        <div className="p-4 bg-gray-50 border-b border-gray-100 flex justify-between items-center">
                             <div>
-                                <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Order ID</span>
-                                <p className="font-mono font-bold text-gray-700 dark:text-gray-300">#{order._id.substring(0, 8)}</p>
+                                <span className="text-xs text-gray-500 uppercase tracking-wide">Order ID</span>
+                                <p className="font-mono font-bold text-gray-700">#{order._id.substring(0, 8)}</p>
                             </div>
                             <div className="text-right">
                                 <p className="text-xs text-gray-500">{new Date(order.createdAt).toLocaleDateString()}</p>
@@ -72,19 +72,19 @@ const OrderList = () => {
                         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* User Details */}
                             <div className="space-y-3">
-                                <h4 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wide border-b border-gray-100 dark:border-gray-800 pb-2">Customer Details</h4>
+                                <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wide border-b border-gray-100 pb-2">Customer Details</h4>
                                 <div className="space-y-1 text-sm">
                                     <p className="flex justify-between">
-                                        <span className="text-gray-500 dark:text-gray-400">Name:</span>
-                                        <span className="font-medium text-gray-900 dark:text-white text-right">{order.user?.name || 'Guest'}</span>
+                                        <span className="text-gray-500">Name:</span>
+                                        <span className="font-medium text-gray-900 text-right">{order.user?.name || 'Guest'}</span>
                                     </p>
                                     <p className="flex justify-between">
-                                        <span className="text-gray-500 dark:text-gray-400">Phone:</span>
-                                        <span className="font-medium text-gray-900 dark:text-white text-right">{order.shippingAddress?.phone || 'N/A'}</span>
+                                        <span className="text-gray-500">Phone:</span>
+                                        <span className="font-medium text-gray-900 text-right">{order.shippingAddress?.phone || 'N/A'}</span>
                                     </p>
                                     <div className="pt-2">
-                                        <span className="text-gray-500 dark:text-gray-400 block mb-1">Shipping Address:</span>
-                                        <p className="font-medium text-gray-900 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 p-2 rounded-lg text-xs leading-relaxed">
+                                        <span className="text-gray-500 block mb-1">Shipping Address:</span>
+                                        <p className="font-medium text-gray-900 bg-gray-50 p-2 rounded-lg text-xs leading-relaxed">
                                             {order.shippingAddress?.address}, {order.shippingAddress?.city}<br />
                                             {order.shippingAddress?.postalCode}
                                         </p>
@@ -94,11 +94,11 @@ const OrderList = () => {
 
                             {/* Order Items */}
                             <div className="space-y-3">
-                                <h4 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wide border-b border-gray-100 dark:border-gray-800 pb-2">Order Items</h4>
+                                <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wide border-b border-gray-100 pb-2">Order Items</h4>
                                 <div className="space-y-2 max-h-48 overflow-y-auto pr-1 custom-scrollbar">
                                     {order.items && order.items.map((item, idx) => (
-                                        <div key={idx} className="flex items-center gap-3 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                                            <div className="w-10 h-10 bg-white dark:bg-gray-900 rounded-md overflow-hidden border border-gray-200 dark:border-gray-700 flex-shrink-0">
+                                        <div key={idx} className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg">
+                                            <div className="w-10 h-10 bg-white rounded-md overflow-hidden border border-gray-200 flex-shrink-0">
                                                 <img
                                                     src={item.image || 'https://placehold.co/100x100?text=No+Img'}
                                                     alt={item.name}
@@ -107,10 +107,10 @@ const OrderList = () => {
                                                 />
                                             </div>
                                             <div className="flex-1 min-w-0">
-                                                <p className="text-sm font-bold text-gray-900 dark:text-white truncate">{item.name}</p>
-                                                <p className="text-xs text-gray-500 dark:text-gray-400">₹{item.price} X {item.quantity} x {(item.packSize === 1 && /\d/.test(item.unit || '')) ? '' : (item.packSize || 1)} {item.unit || 'kg'}</p>
+                                                <p className="text-sm font-bold text-gray-900 truncate">{item.name}</p>
+                                                <p className="text-xs text-gray-500">₹{item.price} X {item.quantity} x {(item.packSize === 1 && /\d/.test(item.unit || '')) ? '' : (item.packSize || 1)} {item.unit || 'kg'}</p>
                                             </div>
-                                            <p className="text-sm font-bold text-gray-900 dark:text-white">₹{item.quantity * item.price}</p>
+                                            <p className="text-sm font-bold text-gray-900">₹{item.quantity * item.price}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -118,17 +118,17 @@ const OrderList = () => {
                         </div>
 
                         {/* Card Footer */}
-                        <div className="p-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-100 dark:border-gray-800 flex justify-between items-center transition-colors">
+                        <div className="p-4 bg-gray-50 border-t border-gray-100 flex justify-between items-center transition-colors">
                             <div>
-                                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Payment Method</p>
-                                <span className="text-sm font-bold text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-700 shadow-sm">
+                                <p className="text-xs text-gray-500 mb-1">Payment Method</p>
+                                <span className="text-sm font-bold text-gray-700 bg-white px-2 py-1 rounded border border-gray-200 shadow-sm">
                                     {order.paymentMethod || 'Online'}
                                 </span>
                             </div>
                             <div className="text-right flex items-center gap-4">
                                 <div>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Total Amount</p>
-                                    <p className="text-xl font-bold text-primary-600 dark:text-primary-400">₹{order.totalPrice.toFixed(2)}</p>
+                                    <p className="text-xs text-gray-500 mb-1">Total Amount</p>
+                                    <p className="text-xl font-bold text-primary-600">₹{order.totalPrice.toFixed(2)}</p>
                                 </div>
                                 {(!order.isDelivered && order.orderStatus !== 'Cancelled') && (
                                     <button

@@ -23,7 +23,7 @@ import OrderList from './pages/admin/OrderList';
 import MessageList from './pages/admin/MessageList';
 
 // Placeholder pages for now
-const NotFound = () => <div className="text-center py-20 bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors h-[60vh] flex flex-col items-center justify-center">
+const NotFound = () => <div className="text-center py-20 bg-white text-gray-900 transition-colors h-[60vh] flex flex-col items-center justify-center">
   <h2 className="text-4xl font-serif font-bold mb-4">404</h2>
   <p className="text-xl">Page Not Found</p>
 </div>;

@@ -88,22 +88,22 @@ const Login = () => {
 
     return (
         <div className="flex items-center justify-center min-h-[80vh]">
-            <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-3xl shadow-premium p-8 md:p-12 relative overflow-hidden transition-all duration-300 border border-gray-100 dark:border-gray-800">
+            <div className="w-full max-w-md bg-white rounded-3xl shadow-premium p-8 md:p-12 relative overflow-hidden transition-all duration-300 border border-gray-100">
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-400 to-primary-600" />
 
-                <div className="mx-auto w-16 h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center mb-6">
-                    <Leaf className="w-8 h-8 text-primary-500 dark:text-primary-400" />
+                <div className="mx-auto w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mb-6">
+                    <Leaf className="w-8 h-8 text-primary-500" />
                 </div>
 
-                <h1 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-2 text-center">
+                <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2 text-center">
                     {isLogin ? 'Welcome Back' : 'Create Account'}
                 </h1>
-                <p className="text-gray-500 dark:text-gray-400 mb-8 text-center">
+                <p className="text-gray-500 mb-8 text-center">
                     {isLogin ? 'Sign in to continue your fresh journey' : 'Join us for fresh vegetables daily'}
                 </p>
 
                 {error && (
-                    <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 text-red-600 dark:text-red-400 rounded-xl text-sm text-center">
+                    <div className="mb-6 p-4 bg-red-50 border border-red-100 text-red-600 rounded-xl text-sm text-center">
                         {error}
                     </div>
                 )}
@@ -111,14 +111,14 @@ const Login = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {!isLogin && (
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                             <input
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
                                 placeholder="John Doe"
                             />
                         </div>
@@ -132,7 +132,7 @@ const Login = () => {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
                             placeholder="you@example.com"
                         />
                     </div>
@@ -145,7 +145,7 @@ const Login = () => {
                             value={formData.password}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
                             placeholder="••••••••"
                         />
                     </div>
@@ -160,15 +160,15 @@ const Login = () => {
                 </form>
 
                 <div className="my-6 flex items-center">
-                    <div className="flex-1 border-t border-gray-200 dark:border-gray-700"></div>
+                    <div className="flex-1 border-t border-gray-200"></div>
                     <span className="px-4 text-sm text-gray-400">OR</span>
-                    <div className="flex-1 border-t border-gray-200 dark:border-gray-700"></div>
+                    <div className="flex-1 border-t border-gray-200"></div>
                 </div>
 
                 <button
                     onClick={handleGoogleLogin}
                     type="button"
-                    className="w-full flex items-center justify-center space-x-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 text-gray-700 dark:text-gray-300 font-medium py-3.5 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-sm hover:shadow-md"
+                    className="w-full flex items-center justify-center space-x-3 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 font-medium py-3.5 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-sm hover:shadow-md"
                 >
                     <img
                         src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"

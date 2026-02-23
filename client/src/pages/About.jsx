@@ -32,7 +32,7 @@ const About = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50/50 dark:bg-gray-950 pt-20 transition-colors duration-300">
+        <div className="min-h-screen bg-gray-50/50 pt-20 transition-colors duration-300">
             {/* Hero Section */}
             <section className="relative py-24 bg-primary-600 overflow-hidden mx-4 md:mx-6 rounded-[2.5rem] shadow-premium mb-20">
                 <div className="absolute inset-0 opacity-20">
@@ -72,17 +72,17 @@ const About = () => {
             <section className="container mx-auto px-6 mb-32">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <motion.div {...fadeIn}>
-                        <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mb-6">Established with Trust</h2>
-                        <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                        <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6">Established with Trust</h2>
+                        <p className="text-gray-600 text-lg leading-relaxed mb-8">
                             VegetablesHub started as a small local initiative in Adoni to provide families with high-quality, chemical-free vegetables and fruits. Today, we stand as a symbol of trust and health for hundreds of customers.
                         </p>
-                        <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-soft border border-gray-100 dark:border-gray-800 flex items-start space-x-6">
-                            <div className="w-16 h-16 bg-primary-50 dark:bg-primary-900/20 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400 shrink-0">
+                        <div className="bg-white p-8 rounded-3xl shadow-soft border border-gray-100 flex items-start space-x-6">
+                            <div className="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center text-primary-600 shrink-0">
                                 <MapPin className="w-8 h-8" />
                             </div>
                             <div>
-                                <h4 className="font-bold text-gray-900 dark:text-white text-xl mb-2">Find Us At</h4>
-                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                                <h4 className="font-bold text-gray-900 text-xl mb-2">Find Us At</h4>
+                                <p className="text-gray-600 leading-relaxed font-medium">
                                     Opposite to Trends, Apsari Road,<br />
                                     J78Q+RMG, RTC Colonly, Adoni, <br />
                                     Andhra Pradesh 518301
@@ -93,7 +93,7 @@ const About = () => {
                     <motion.div
                         {...fadeIn}
                         transition={{ delay: 0.2 }}
-                        className="relative h-[500px] rounded-[3rem] overflow-hidden shadow-2xl bg-gray-100 dark:bg-gray-800"
+                        className="relative h-[500px] rounded-[3rem] overflow-hidden shadow-2xl bg-gray-100"
                     >
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1000!2d77.2892552!3d15.6172868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1740209300000!5m2!1sen!2sin"
@@ -114,7 +114,7 @@ const About = () => {
                 <div className="text-center mb-16">
                     <motion.h2
                         {...fadeIn}
-                        className="text-4xl md:text-5xl font-serif font-bold text-gray-900 dark:text-white mb-4"
+                        className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4"
                     >
                         Meet the Visionaries
                     </motion.h2>
@@ -130,10 +130,10 @@ const About = () => {
                             key={member.name}
                             {...fadeIn}
                             transition={{ delay: index * 0.2 }}
-                            className="bg-white dark:bg-gray-900 rounded-[3rem] overflow-hidden shadow-soft border border-gray-100 dark:border-gray-800 group hover:shadow-premium dark:hover:shadow-primary-900/10 transition-all duration-500"
+                            className="bg-white rounded-[3rem] overflow-hidden shadow-soft border border-gray-100 group hover:shadow-premium transition-all duration-500"
                         >
                             <div className="flex flex-col lg:flex-row h-full">
-                                <div className="lg:w-2/5 relative overflow-hidden h-96 lg:h-auto bg-gray-50 dark:bg-gray-800 flex items-center justify-center p-3">
+                                <div className="lg:w-2/5 relative overflow-hidden h-96 lg:h-auto bg-gray-50 flex items-center justify-center p-3">
                                     <div className="w-full h-full relative overflow-hidden rounded-2xl aspect-[4/5] sm:aspect-square lg:aspect-[4/5]">
                                         <img
                                             src={member.image}
@@ -157,24 +157,24 @@ const About = () => {
                                 </div>
                                 <div className="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
                                     <div className="mb-6">
-                                        <span className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-3 inline-block ${member.isOwner ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400' : 'bg-primary-100 dark:bg-primary-900/40 text-primary-700 dark:text-primary-400'}`}>
+                                        <span className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-3 inline-block ${member.isOwner ? 'bg-amber-100 text-amber-700' : 'bg-primary-100 text-primary-700'}`}>
                                             {member.role}
                                         </span>
-                                        <h3 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4">{member.name}</h3>
-                                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed italic mb-8">"{member.bio}"</p>
+                                        <h3 className="text-3xl font-serif font-bold text-gray-900 mb-4">{member.name}</h3>
+                                        <p className="text-gray-600 leading-relaxed italic mb-8">"{member.bio}"</p>
                                     </div>
-                                    <div className="space-y-4 pt-6 border-t border-gray-100 dark:border-gray-800">
-                                        <div className="flex items-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer group/link">
-                                            <div className="w-10 h-10 bg-gray-50 dark:bg-gray-800 rounded-xl flex items-center justify-center group-hover/link:bg-primary-50 dark:group-hover/link:bg-primary-900/20 transition-colors">
+                                    <div className="space-y-4 pt-6 border-t border-gray-100">
+                                        <div className="flex items-center space-x-4 text-gray-500 hover:text-primary-600 transition-colors cursor-pointer group/link">
+                                            <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center group-hover/link:bg-primary-50 transition-colors">
                                                 <Mail className="w-5 h-5" />
                                             </div>
-                                            <span className="font-medium text-gray-700 dark:text-gray-300">{member.email}</span>
+                                            <span className="font-medium text-gray-700">{member.email}</span>
                                         </div>
-                                        <div className="flex items-center space-x-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer group/link">
-                                            <div className="w-10 h-10 bg-gray-50 dark:bg-gray-800 rounded-xl flex items-center justify-center group-hover/link:bg-primary-50 dark:group-hover/link:bg-primary-900/20 transition-colors">
+                                        <div className="flex items-center space-x-4 text-gray-500 hover:text-primary-600 transition-colors cursor-pointer group/link">
+                                            <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center group-hover/link:bg-primary-50 transition-colors">
                                                 <Phone className="w-5 h-5" />
                                             </div>
-                                            <span className="font-medium text-gray-700 dark:text-gray-300">+91 {member.phone}</span>
+                                            <span className="font-medium text-gray-700">+91 {member.phone}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@ const About = () => {
             </section>
 
             {/* Values Section */}
-            <section className="bg-gray-900 dark:bg-black py-32 mx-4 md:mx-6 rounded-[3rem] mb-20 text-white text-center transition-colors">
+            <section className="bg-gray-900 py-32 mx-4 md:mx-6 rounded-[3rem] mb-20 text-white text-center transition-colors">
                 <div className="container mx-auto px-6">
                     <motion.h2 {...fadeIn} className="text-4xl md:text-5xl font-serif font-bold mb-16">The Values We Live By</motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

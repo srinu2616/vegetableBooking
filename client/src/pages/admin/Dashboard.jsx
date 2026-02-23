@@ -3,10 +3,10 @@ import api from '../../services/api';
 import { Package, DollarSign, Users, Sprout } from 'lucide-react';
 
 const StatCard = ({ title, value, icon: Icon, color }) => (
-    <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between transition-colors">
+    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between transition-colors">
         <div>
-            <p className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">{title}</p>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{value}</h3>
+            <p className="text-gray-500 text-sm font-medium mb-1">{title}</p>
+            <h3 className="text-2xl font-bold text-gray-900">{value}</h3>
         </div>
         <div className={`p-4 rounded-xl ${color}`}>
             <Icon className="w-6 h-6 text-white" />
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">Dashboard Overview</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-8">Dashboard Overview</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {stats.map((stat, index) => (
@@ -51,9 +51,9 @@ const Dashboard = () => {
                 ))}
             </div>
 
-            <div className="mt-8 bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm text-center transition-colors">
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Welcome Admin!</h3>
-                <p className="text-gray-500 dark:text-gray-400">Select an option from the sidebar to manage your store.</p>
+            <div className="mt-8 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm text-center transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">Welcome Admin!</h3>
+                <p className="text-gray-500">Select an option from the sidebar to manage your store.</p>
             </div>
         </div>
     );

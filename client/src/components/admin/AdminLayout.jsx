@@ -20,10 +20,10 @@ const AdminLayout = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex transition-colors duration-300">
+        <div className="min-h-screen bg-gray-50 flex transition-colors duration-300">
             {/* Sidebar */}
-            <aside className="bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 fixed inset-y-0 left-0 z-20 flex flex-col w-20 lg:w-64 transition-all duration-300">
-                <div className="h-20 flex items-center justify-center lg:justify-start lg:px-8 border-b border-gray-100 dark:border-gray-800">
+            <aside className="bg-white border-r border-gray-200 fixed inset-y-0 left-0 z-20 flex flex-col w-20 lg:w-64 transition-all duration-300">
+                <div className="h-20 flex items-center justify-center lg:justify-start lg:px-8 border-b border-gray-100">
                     <span className="text-2xl font-serif font-bold text-primary-600 flex items-center gap-2">
                         <ShoppingBag className="w-8 h-8" />
                         <span className="hidden lg:block">VegetablesHub</span>
@@ -38,8 +38,8 @@ const AdminLayout = () => {
                             className={({ isActive }) => `
                                 flex items-center justify-center lg:justify-start gap-3 px-3 lg:px-4 py-3 rounded-xl transition-all duration-200
                                 ${isActive
-                                    ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-bold shadow-sm'
-                                    : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white'}
+                                    ? 'bg-primary-50 text-primary-600 font-bold shadow-sm'
+                                    : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'}
                             `}
                             title={item.label}
                         >
@@ -49,10 +49,10 @@ const AdminLayout = () => {
                     ))}
                 </nav>
 
-                <div className="p-4 border-t border-gray-100 dark:border-gray-800">
+                <div className="p-4 border-t border-gray-100">
                     <button
                         onClick={handleLogout}
-                        className="flex items-center justify-center lg:justify-start gap-3 px-3 lg:px-4 py-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-xl w-full transition-colors font-medium"
+                        className="flex items-center justify-center lg:justify-start gap-3 px-3 lg:px-4 py-3 text-red-600 hover:bg-red-50 rounded-xl w-full transition-colors font-medium"
                         title="Sign Out"
                     >
                         <LogOut className="w-6 h-6 lg:w-5 lg:h-5" />
