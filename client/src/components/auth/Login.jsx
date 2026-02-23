@@ -125,7 +125,7 @@ const Login = () => {
                     )}
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
                         <input
                             type="email"
                             name="email"
@@ -138,7 +138,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
                         <input
                             type="password"
                             name="password"

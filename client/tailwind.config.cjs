@@ -2,6 +2,7 @@ const withMT = require("@material-tailwind/react/utils/withMT");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = withMT({
+    darkMode: 'class',
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
@@ -41,6 +42,10 @@ module.exports = withMT({
                     700: '#44403c',
                     800: '#292524',
                     900: '#1c1917',
+                    950: '#0c0a09',
+                },
+                gray: {
+                    950: '#030712',
                 }
             },
             fontFamily: {
